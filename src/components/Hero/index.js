@@ -8,7 +8,7 @@ function Hero() {
   return (
     <div className=' relative overflow-hidden'>
       <motion.div 
-      className='absolute top-20 left-0 w-full flex'
+      className='absolute top-20 left-0 w-full flex '
       animate={{ x: ['0%', '-100%'] }}
         transition={{
           duration: 30, // Длительность одного цикла анимации
@@ -20,19 +20,19 @@ function Hero() {
         <img className='w-full h-full object-cover' src="/images/clouds.png" alt="" />
         <img className='w-full h-full object-cover' src="/images/clouds.png" alt="" />
       </motion.div>
-      <div  className='absolute  w-full  h-[30%] -top-12 translate-y-full max-xl:translate-y-[90%] max-lg:translate-y-[95%] max-md:translate-y-[14%] z-10'>
-        <img className='w-full h-full object-contain' src="/images/bg-1.png" alt="" />
+      <div  className='absolute  w-full  h-[30%] -top-12 translate-y-full max-xl:translate-y-[90%] max-lg:translate-y-[95%] max-md:translate-y-[14%] max-[442px]:translate-y-6 z-10 '>
+        <img className='w-full h-full object-contain xl:object-cover overflow-visible' src="/images/bg-1.png" alt="" />
       </div>
-      <div className='absolute w-full h-[40%] -top-20 translate-y-3/4 max-xl:translate-y-[60%] max-lg:translate-y-[65%] max-md:translate-y-[3%] z-20'>
-        <img className='w-full h-full object-contain' src="/images/bg-2.png" alt="" />
+      <div className='absolute w-full h-[40%] -top-20 translate-y-3/4 max-xl:translate-y-[60%] max-lg:translate-y-[65%] max-md:translate-y-[3%] max-[442px]:-translate-y-16 z-20'>
+        <img className='w-full h-full object-contain xl:object-cover overflow-visible' src="/images/bg-2.png" alt="" />
       </div>
-      <div className='absolute  w-full h-[50%] -top-96 translate-y-full max-xl:translate-y-[85%] max-lg:translate-y-[90%] max-md:translate-y-[20%] z-30'>
-        <img className='w-full h-full object-contain' src="/images/bg-3.png" alt="" />
+      <div className='absolute  w-full h-[50%] -top-96 translate-y-full max-xl:translate-y-[85%] max-lg:translate-y-[90%] max-md:translate-y-[20%] max-[442px]:translate-y-40 z-30'>
+        <img className='w-full h-full object-contain xl:object-cover overflow-visible' src="/images/bg-3.png" alt="" />
       </div>
-      <div className='absolute top-[23%] translate-y-1/2 left-64 max-xl:left-52 max-lg:left-40 max-md:top-[10%] max-md:left-12'>
+      <div className='absolute top-[23%] translate-y-1/2 left-64 max-xl:left-52 max-lg:left-40 max-md:top-[10%] max-md:left-12 max-[442px]:top-52'>
         <div className='relative w-32'>
-          <div className='absolute -left-8 top-0  z-50'>
-            <motion.img src="/images/windmill-top.png" alt="Windmill Top" 
+          <div className='absolute -left-8 top-0 max-[442px]:-left-1 max-[442px]:top-5 z-50'>
+            <motion.img className='w-full h-full object-cover max-[442px]:w-20' src="/images/windmill-top.png" alt="Windmill Top" 
               animate={{ rotate: 360 }}
               transition={{ repeat: Infinity, duration: 5, ease: "linear" }}/>
           </div>
