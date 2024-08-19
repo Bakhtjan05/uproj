@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+body {
+
+  background: linear-gradient(180deg, #59C3FF 0%, #88D8F0 30.67%);
+ 
+}
+
+
+@font-face {
+  font-family: "LilitaOneRegular";
+  src: url("/fonts/LilitaOne-Regular.ttf") format("opentype");
+}
+
+@font-face {
+  font-family: "InterBlack";
+  src: url("/fonts/Inter-Black.ttf") format("opentype");
+}
+
