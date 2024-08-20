@@ -8,9 +8,9 @@ function Hero() {
   const { scrollY } = useScroll();
 
   // Применяем трансформацию на основе прокрутки
-  const bg1Y = useTransform(scrollY, [0, 1000], [0, -100]);
-  const bg2Y = useTransform(scrollY, [0, 1000], [0, -150]);
-  const bg3Y = useTransform(scrollY, [0, 1000], [0, -200]);
+  const bg1Y = useTransform(scrollY, [0, 5000], [0, -100]);
+  const bg2Y = useTransform(scrollY, [0, 5000], [0, -150]);
+  const bg3Y = useTransform(scrollY, [0, 5000], [0, -200]);
   const benefitsY = useTransform(scrollY, [0, 1000], [0, 50]);
 
   
