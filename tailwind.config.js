@@ -29,7 +29,8 @@ module.exports = {
         interBlack: ["InterBlack", "sans-serif"]
       },
       textColor: {
-        "input": "#7F513D"
+        "input": "#7F513D",
+        "place-holder": "#AC8A63"
       }
     },
   },
