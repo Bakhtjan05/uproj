@@ -1,5 +1,6 @@
 import React from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion';
+import useMediaQuery from 'use-media-query-hook';
 
 
 
@@ -7,10 +8,12 @@ function Hero() {
 
   const { scrollY } = useScroll();
 
-  // Применяем трансформацию на основе прокрутки
-  const bg1Y = useTransform(scrollY, [0, 5000], [0, -100]);
-  const bg2Y = useTransform(scrollY, [0, 5000], [0, -150]);
-  const bg3Y = useTransform(scrollY, [0, 5000], [0, -200]);
+  const isMobile = useMediaQuery('(max-width: 768px)');
+
+
+  const bg1Y = useTransform(scrollY, isMobile ? [0, 5000] : [0, 800], [0, -100]);
+  const bg2Y = useTransform(scrollY, isMobile ? [0, 5000] : [0, 800], [0, -150]);
+  const bg3Y = useTransform(scrollY, isMobile ? [0, 5000] : [0, 800], [0, -200]);
   const benefitsY = useTransform(scrollY, [0, 1000], [0, 50]);
 
   
