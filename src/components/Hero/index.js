@@ -1,15 +1,24 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion';
-import useMediaQuery from 'use-media-query-hook';
 
 
 
 function Hero() {
+  const [isMobile, setIsMobile] = useState(false);
 
   const { scrollY } = useScroll();
 
-  const isMobile = useMediaQuery('(max-width: 768px)');
+  useEffect(() => {
+    const checkScreenSize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
 
+    checkScreenSize(); // Проверяем при монтировании
+
+    window.addEventListener('resize', checkScreenSize); // Слушаем изменения размера экрана
+
+    return () => window.removeEventListener('resize', checkScreenSize); // Убираем слушателя при размонтировании
+  }, []);
 
   const bg1Y = useTransform(scrollY, isMobile ? [0, 5000] : [0, 800], [0, -100]);
   const bg2Y = useTransform(scrollY, isMobile ? [0, 5000] : [0, 800], [0, -150]);
