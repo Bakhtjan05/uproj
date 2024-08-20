@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react'
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll, useTransform, useAnimation } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
 
 
 
@@ -24,6 +25,48 @@ function Hero() {
   const bg2Y = useTransform(scrollY, isMobile ? [0, 5000] : [0, 800], [0, -150]);
   const bg3Y = useTransform(scrollY, isMobile ? [0, 5000] : [0, 800], [0, -200]);
   const benefitsY = useTransform(scrollY, [0, 1000], [0, 50]);
+
+  const controls1 = useAnimation();
+  const controls2 = useAnimation();
+  const controls3 = useAnimation();
+
+  const { ref: ref1, inView: inView1 } = useInView({
+    triggerOnce: false,
+    threshold: 0.1,
+  });
+  const { ref: ref2, inView: inView2 } = useInView({
+    triggerOnce: false,
+    threshold: 0.1,
+  });
+  const { ref: ref3, inView: inView3 } = useInView({
+    triggerOnce: false,
+    threshold: 0.1,
+  });
+
+  useEffect(() => {
+    if (inView1) {
+      controls1.start({ scale: [1.2, 0.95, 1.1, 0.98, 1.02, 1], opacity: 1 });
+    } else {
+      controls1.start({ scale: 0, opacity: 0 });
+    }
+  }, [controls1, inView1]);
+
+  useEffect(() => {
+    if (inView2) {
+      controls2.start({ scale: [1.2, 0.95, 1.1, 0.98, 1.02, 1], opacity: 1 });
+    } else {
+      controls2.start({ scale: 0, opacity: 0 });
+    }
+  }, [controls2, inView2]);
+
+  useEffect(() => {
+    if (inView3) {
+      controls3.start({ scale: [1.2, 0.95, 1.1, 0.98, 1.02, 1], opacity: 1 });
+    } else {
+      controls3.start({ scale: 0, opacity: 0 });
+    }
+  }, [controls3, inView3]);
+
 
   
   return (
@@ -126,24 +169,42 @@ function Hero() {
               </div>
             </div>
             <div className='w-full flex max-md:flex-col justify-center gap-2 max-sm:gap-12 mt-14'>
-              <div className='flex-1 flex flex-col items-center px-8'>
+              <motion.div
+               className='flex-1 flex flex-col items-center px-8'
+               ref={ref1}
+              initial={{ scale: 0, opacity: 0 }}
+              animate={controls1}
+              transition={{ duration: 1.5, ease: 'easeInOut' }}
+               >
                 <div className='max-sm:w-1/2'>
                   <img className='w-full h-full object-cover' src="/images/benefit-1.png" alt="" />
                 </div>
                 <p className='font-lilitaOneRegular text-[#C0ED62] text-[28px] max-sm:text-base text-center text-nowrap max-xl:text-wrap'>Unlock a special skin <br className='max-xl:hidden'/> that's only available to <br className='max-xl:hidden'/> our waiting list <br className='max-xl:hidden'/> members!</p>
-              </div>
-              <div className='flex-1 flex flex-col items-center px-8'>
+              </motion.div>
+              <motion.div 
+              className='flex-1 flex flex-col items-center px-8'
+              ref={ref2}
+              initial={{ scale: 0, opacity: 0 }}
+              animate={controls2}
+              transition={{ duration: 1.5, ease: 'easeInOut' }}
+              >
                 <div className='max-sm:w-1/2'>
                   <img src="/images/benefit-2.png" alt="" />
                 </div>
                 <p className='font-lilitaOneRegular text-[#C0ED62] text-[28px]  max-sm:text-base text-center text-nowrap max-xl:text-wrap'>Enjoy exclusive in-game <br className='max-xl:hidden'/> items and perks just for <br className='max-xl:hidden'/> subscribers.</p>
-              </div>
-              <div className='flex-1 flex flex-col items-center px-8'>
+              </motion.div>
+              <motion.div
+               className='flex-1 flex flex-col items-center px-8'
+               ref={ref3}
+              initial={{ scale: 0, opacity: 0 }}
+              animate={controls3}
+              transition={{ duration: 1.5, ease: 'easeInOut' }}
+               >
                 <div className='max-sm:w-1/2'>
                   <img src="/images/benefit-3.png" alt="" />
                 </div>
                 <p className='font-lilitaOneRegular text-[#C0ED62] text-[28px]  max-sm:text-base text-center text-nowrap max-xl:text-wrap'>Get early access to the <br className='max-xl:hidden'/> freshest gameplay <br className='max-xl:hidden' /> before anyone else!</p>
-              </div>
+              </motion.div>
             </div>
           </div>
           <div className='absolute bottom-0 max-sm:bottom-12 w-full'>
