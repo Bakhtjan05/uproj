@@ -134,7 +134,7 @@ function Hero() {
               </div>
             </div>
           </div>
-          <div className='absolute bottom-0 w-full'>
+          <div className='absolute bottom-0 max-sm:bottom-12 w-full'>
             <img className='w-full h-full object-cover' src="/images/foreground.png" alt="" />
           </div>
       </motion.div>
