@@ -74,7 +74,7 @@ function Hero() {
   
   return (
     <div className=' relative overflow-hidden'>
-      <div className='bg-[#19360F] absolute left-0 bottom-0 w-full h-1/3 z-20'>
+      <div className='bg-[#19360F] absolute left-0 bottom-0 w-full h-1/3   z-20'>
 
       </div>
       <motion.div 
@@ -216,7 +216,7 @@ function Hero() {
           
       </motion.div>
       
-      <div className='absolute bottom-0 max-sm:bottom-12 w-full z-30'>
+      <div className='absolute bottom-0  w-full z-30'>
             <img className='w-full h-full object-cover' src="/images/foreground.png" alt="" />
       </div>
 
