@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react'
+import ReCAPTCHA from 'react-google-recaptcha';
 import { motion, useScroll, useTransform, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
@@ -9,6 +10,23 @@ function Hero() {
 
   const { scrollY } = useScroll();
 
+  const [recaptchaToken, setRecaptchaToken] = useState(null);
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    if (!recaptchaToken) {
+      alert('Please verify that you are not a robot.');
+      return;
+    }
+
+    // Handle form submission logic here
+    console.log('Form submitted with reCAPTCHA token:', recaptchaToken);
+  };
+
+  const onRecaptchaChange = (token) => {
+    setRecaptchaToken(token);
+  }
   useEffect(() => {
     const checkScreenSize = () => {
       setIsMobile(window.innerWidth < 768);
@@ -25,7 +43,7 @@ function Hero() {
   const bg1Y = useTransform(scrollY, isMobile ? [0, 3000] : [0, 3000], [0, -550]);
   const bg2Y = useTransform(scrollY, isMobile ? [0, 3000] : [0, 3000], [0, -750]);
   const bg3Y = useTransform(scrollY, isMobile ? [0, 3000] : [0, 3000], [0, -1000]);
-  const benefitsY = useTransform(scrollY, [0, 1000], [0, -500]);
+  const benefitsY = useTransform(scrollY, [0, 1000], [0, -300]);
 
   
 
@@ -124,14 +142,26 @@ function Hero() {
             <div className='flex justify-center -mt-4 max-lg:mt-12'>
               <img src="/images/form-title.png" alt="" />
             </div>
-            <div className='mt-4 max-lg:mt-0'>
+            <form onSubmit={handleSubmit} className='mt-4 max-lg:mt-0'>
               <div className='bg-input-field bg-contain bg-center bg-no-repeat py-1 ps-8 pe-5'>
-                <input className='w-full h-full font-lilitaOneRegular text-input placeholder:text-place-holder focus:placeholder-transparent text-xl py-5 bg-transparent border-none outline-none focus:border-none ' type="text" placeholder='ENTER FULL NAME'/>
+                <input
+                  className='w-full h-full font-lilitaOneRegular text-input placeholder:text-place-holder focus:placeholder-transparent text-xl py-5 bg-transparent border-none outline-none focus:border-none ' type="text" placeholder='ENTER FULL NAME'
+                  required
+                  />
               </div>
               <div className='bg-input-field bg-contain bg-center bg-no-repeat py-1 ps-8 pe-5 mt-3 max-lg:mt-0'>
-                <input className='w-full h-full font-lilitaOneRegular text-input placeholder:text-place-holder focus:placeholder-transparent text-xl py-5 bg-transparent border-none outline-none focus:border-none ' type="email" placeholder='ENTER EMAIL'/>
+                <input 
+                className='w-full h-full font-lilitaOneRegular text-input placeholder:text-place-holder focus:placeholder-transparent text-xl py-5 bg-transparent border-none outline-none focus:border-none ' type="email" placeholder='ENTER EMAIL'
+                required
+                />
               </div>
+              <div className='mt-4'>
+                  <ReCAPTCHA
+                    sitekey="6Ld05isqAAAAAHmMvuZmxZc4ivTshAUhvojRQUdR"
+                    onChange={onRecaptchaChange}
+                 />
             </div>
+            </form>
             <div className='flex justify-center mt-4 max-lg:mt-0'>
               <button>
                 <img src="/images/button.png" alt="" />
