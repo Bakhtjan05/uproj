@@ -216,8 +216,8 @@ function Hero() {
           
       </motion.div>
       
-      <div className='absolute bottom-0  w-full z-30'>
-            <img className='w-full h-full object-cover' src="/images/foreground.png" alt="" />
+      <div className='absolute bottom-0 overflow-visible w-full z-50'>
+          <img className='w-full h-full object-cover' src="/images/foreground.png" alt="" />
       </div>
 
     </div>
