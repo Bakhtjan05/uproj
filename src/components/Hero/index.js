@@ -22,10 +22,10 @@ function Hero() {
   }, []);
 
   
-  const bg1Y = useTransform(scrollY, isMobile ? [0, 5000] : [0, 1800], [0, -100]);
-  const bg2Y = useTransform(scrollY, isMobile ? [0, 5000] : [0, 1800], [0, -150]);
-  const bg3Y = useTransform(scrollY, isMobile ? [0, 5000] : [0, 1800], [0, -500]);
-  const benefitsY = useTransform(scrollY, [0, 1000], [0, -50]);
+  const bg1Y = useTransform(scrollY, isMobile ? [0, 3000] : [0, 3000], [0, -550]);
+  const bg2Y = useTransform(scrollY, isMobile ? [0, 3000] : [0, 3000], [0, -750]);
+  const bg3Y = useTransform(scrollY, isMobile ? [0, 3000] : [0, 3000], [0, -1000]);
+  const benefitsY = useTransform(scrollY, [0, 1000], [0, -500]);
 
   
 
@@ -87,13 +87,13 @@ function Hero() {
         <img className='w-full h-full object-cover' src="/images/clouds.png" alt="" />
         <img className='w-full h-full object-cover' src="/images/clouds.png" alt="" />
       </motion.div>
-      <motion.div style={{ y: bg1Y }}  className='absolute  w-full  h-[30%] top-[28%] translate-y-full max-xl:top-[24%] max-lg:translate-y-[95%] max-md:top-[2%] max-[442px]:top-[3%] z-10 '>
+      <motion.div style={{ y: bg1Y }}  className='absolute  w-full  h-[30%] top-[30%] translate-y-full max-xl:top-[24%] max-lg:translate-y-[95%] max-md:top-[7%] max-[442px]:top-[10%] z-10 '>
         <img className='w-full h-full object-contain xl:object-cover overflow-visible' src="/images/bg-1.png" alt="" />
       </motion.div>
-      <motion.div style={{ y: bg2Y }} className='absolute w-full h-[40%] top-[26%] translate-y-3/4 max-xl:top-[20%] max-lg:translate-y-[65%] max-md:-top-[2%] max-[442px]:-top-[1%] z-20'>
+      <motion.div style={{ y: bg2Y }} className='absolute w-full h-[40%] top-[28%] translate-y-3/4 max-xl:top-[20%] max-lg:translate-y-[65%] max-md:top-[2%] max-[442px]:top-[6%] z-20'>
         <img className='w-full h-full object-contain xl:object-cover overflow-visible' src="/images/bg-2.png" alt="" />
       </motion.div>
-      <motion.div style={{ y: bg3Y }} className='absolute  w-full h-[50%] top-[26%] translate-y-full max-xl:top-[20%] max-lg:translate-y-[90%] max-md:-top-[5%] max-[442px]:-top-[4%] z-30'>
+      <motion.div style={{ y: bg3Y }} className='absolute  w-full h-[50%] top-[28%] translate-y-full max-xl:top-[20%] max-lg:translate-y-[90%] max-md:top-[0%] max-[442px]:top-[4%] z-30'>
         <img className='w-full h-full object-contain xl:object-cover overflow-visible' src="/images/bg-3.png" alt="" />
       </motion.div>
       <div className='absolute top-[24%] translate-y-1/2 left-64 max-xl:left-52 max-lg:left-40 max-md:top-[10%] max-md:left-12 max-[442px]:top-52'>
@@ -137,7 +137,7 @@ function Hero() {
           </motion.div>
         </div>
       </div>
-      <motion.div style={{ y: benefitsY}} className='-mb-[50px] bg-benefits max-md:bg-ground bg-no-repeat bg-cover bg-top w-full h-full relative mt-36 max-xl:mt-0  max-md:mt-24 pb-72 max-lg:pb-36 z-50'>
+      <motion.div style={{ y: benefitsY}} className='-mb-[400px] max-xl:-mb-[320px] max-lg:-mb-[260px] max-md:-mb-[520px] max-[420px]:-mb-[420px] bg-benefits max-md:bg-ground bg-no-repeat bg-cover bg-top w-full h-full relative mt-36 max-xl:mt-0  max-md:mt-24 pb-72 max-lg:pb-36 z-50'>
           <div className='container mx-auto max-md:w-11/12 px-8 max-md:px-0 flex flex-col items-center'>
           <div className='bg-form bg-no-repeat flex flex-col justify-center items-center bg-contain py-0  bg-center w-540 max-md:w-full h-427 max-md:min-h-[427px] relative px-12  max-md:px-8 z-50 md:hidden  max-md:-mt-6'>
             <div className='flex justify-center -mt-4 max-lg:mt-12 max-md:-mt-28 max-[592px]:-mt-6 '>
