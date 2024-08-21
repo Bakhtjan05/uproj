@@ -108,13 +108,13 @@ function Hero() {
         <img className='w-full h-full object-cover' src="/images/clouds.png" alt="" />
         <img className='w-full h-full object-cover' src="/images/clouds.png" alt="" />
       </motion.div>
-      <motion.div style={{ y: bg1Y }}  className='absolute  w-full  h-[30%] top-[29%] translate-y-full max-xl:top-[24%] max-lg:translate-y-[95%] max-md:top-[5%] max-[442px]:top-[5%] z-10 '>
+      <motion.div style={{ y: bg1Y }}  className='absolute  w-full  h-[30%] top-[29%] translate-y-full max-xl:top-[24%] max-lg:translate-y-[95%] max-md:top-[8%] max-[442px]:top-[7%] z-10 '>
         <img className='w-full h-full object-contain xl:object-cover overflow-visible' src="/images/bg-1.png" alt="" />
       </motion.div>
-      <motion.div style={{ y: bg2Y }} className='absolute w-full h-[40%] top-[24%] translate-y-3/4 max-xl:top-[20%] max-lg:translate-y-[65%] max-md:top-[0%] max-[442px]:top-[1%] z-20'>
+      <motion.div style={{ y: bg2Y }} className='absolute w-full h-[40%] top-[24%] translate-y-3/4 max-xl:top-[20%] max-lg:translate-y-[65%] max-md:top-[3%] max-[442px]:top-[2%] z-20'>
         <img className='w-full h-full object-contain xl:object-cover overflow-visible' src="/images/bg-2.png" alt="" />
       </motion.div>
-      <motion.div style={{ y: bg3Y }} className='absolute  w-full h-[50%] top-[24%] translate-y-full max-xl:top-[20%] max-lg:translate-y-[90%] max-md:-top-[2%] max-[442px]:-top-[1%] z-30'>
+      <motion.div style={{ y: bg3Y }} className='absolute  w-full h-[50%] top-[24%] translate-y-full max-xl:top-[20%] max-lg:translate-y-[90%] max-md:top-[1%] max-[442px]:top-[0%] z-30'>
         <img className='w-full h-full object-contain xl:object-cover overflow-visible' src="/images/bg-3.png" alt="" />
       </motion.div>
       <div className='absolute top-[22%] translate-y-1/2 left-64 max-xl:left-52 max-lg:left-40 max-md:top-[10%] max-md:left-12 max-[442px]:top-52'>
@@ -170,7 +170,7 @@ function Hero() {
           </motion.div>
         </div>
       </div>
-      <motion.div style={{ y: benefitsY}} className='  bg-benefits max-md:bg-ground bg-no-repeat bg-cover overflow-hidden bg-top w-full h-full relative mt-36 max-xl:mt-0  max-md:mt-24  z-50'>
+      <motion.div style={{ y: benefitsY}} className='max-md:-mb-36  bg-benefits max-md:bg-ground bg-no-repeat bg-cover overflow-hidden bg-top w-full h-full relative mt-36 max-xl:mt-0  max-md:mt-24  z-50'>
           <div className='container mx-auto max-md:w-11/12 px-8 max-md:px-0 flex flex-col items-center '>
           <div className='bg-form overflow-visible bg-no-repeat flex flex-col justify-center items-center bg-contain py-0  bg-center w-540 max-md:w-full h-427 max-md:min-h-[427px] relative px-12  max-md:px-8 z-50 md:hidden  max-md:-mt-6'>
             <div className='flex justify-center -mt-4 max-lg:mt-12 max-md:-mt-28 max-[592px]:-mt-6 overflow-visible'>
@@ -204,7 +204,7 @@ function Hero() {
                 <img className='' src="/gif/brook.gif" alt="" />
               </div>
             </div>
-            <div className='w-full flex max-md:flex-col justify-center gap-2 max-sm:gap-12 mt-14'>
+            <div className='w-full flex max-md:flex-col justify-center gap-2 max-sm:gap-0 mt-14'>
               <motion.div
                className='flex-1 flex flex-col items-center px-8'
                ref={ref1}
