@@ -137,7 +137,7 @@ function Hero() {
           </motion.div>
         </div>
       </div>
-      <motion.div style={{ y: benefitsY}} className='-mb-[400px] max-xl:-mb-[320px] max-lg:-mb-[260px] max-md:-mb-[520px] max-[420px]:-mb-[420px] bg-benefits max-md:bg-ground bg-no-repeat bg-cover bg-top w-full h-full relative mt-36 max-xl:mt-0  max-md:mt-24 pb-72 max-lg:pb-36 z-50'>
+      <motion.div style={{ y: benefitsY}} className='-mb-[400px] max-xl:-mb-[320px] max-lg:-mb-[260px] max-md:-mb-[420px] max-[420px]:-mb-[420px] bg-benefits max-md:bg-ground bg-no-repeat bg-cover bg-top w-full h-full relative mt-36 max-xl:mt-0  max-md:mt-24 pb-72 max-lg:pb-36 z-50'>
           <div className='container mx-auto max-md:w-11/12 px-8 max-md:px-0 flex flex-col items-center'>
           <div className='bg-form bg-no-repeat flex flex-col justify-center items-center bg-contain py-0  bg-center w-540 max-md:w-full h-427 max-md:min-h-[427px] relative px-12  max-md:px-8 z-50 md:hidden  max-md:-mt-6'>
             <div className='flex justify-center -mt-4 max-lg:mt-12 max-md:-mt-28 max-[592px]:-mt-6 '>
