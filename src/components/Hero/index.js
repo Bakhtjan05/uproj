@@ -48,7 +48,7 @@ function Hero() {
 
   useEffect(() => {
     if (inView1) {
-      controls1.start({ scale: [1.2, 0.95, 1.1, 0.98, 1.02, 1], opacity: 1 });
+      controls1.start({ scale: [0.96, 0.76, 0.88, 0.784, 0.816, 0.8], opacity: 1 });
     } else {
       controls1.start({ scale: 0, opacity: 0 });
     }
@@ -56,7 +56,7 @@ function Hero() {
 
   useEffect(() => {
     if (inView2) {
-      controls2.start({ scale: [1.2, 0.95, 1.1, 0.98, 1.02, 1], opacity: 1 });
+      controls2.start({ scale: [0.96, 0.76, 0.88, 0.784, 0.816, 0.8], opacity: 1 });
     } else {
       controls2.start({ scale: 0, opacity: 0 });
     }
@@ -64,7 +64,7 @@ function Hero() {
 
   useEffect(() => {
     if (inView3) {
-      controls3.start({ scale: [1.2, 0.95, 1.1, 0.98, 1.02, 1], opacity: 1 });
+      controls3.start({ scale: [0.96, 0.76, 0.88, 0.784, 0.816, 0.8], opacity: 1 });
     } else {
       controls3.start({ scale: 0, opacity: 0 });
     }
@@ -74,6 +74,9 @@ function Hero() {
   
   return (
     <div className=' relative overflow-hidden'>
+      <div className='bg-[#19360F] absolute left-0 bottom-0 w-full h-1/3 z-20'>
+
+      </div>
       <motion.div 
       className='absolute top-20 left-0 w-full flex '
       animate={{ x: ['0%', '-100%'] }}
@@ -87,16 +90,16 @@ function Hero() {
         <img className='w-full h-full object-cover' src="/images/clouds.png" alt="" />
         <img className='w-full h-full object-cover' src="/images/clouds.png" alt="" />
       </motion.div>
-      <motion.div style={{ y: bg1Y }}  className='absolute  w-full  h-[30%] top-[30%] translate-y-full max-xl:top-[24%] max-lg:translate-y-[95%] max-md:top-[7%] max-[442px]:top-[10%] z-10 '>
+      <motion.div style={{ y: bg1Y }}  className='absolute  w-full  h-[30%] top-[29%] translate-y-full max-xl:top-[24%] max-lg:translate-y-[95%] max-md:top-[5%] max-[442px]:top-[5%] z-10 '>
         <img className='w-full h-full object-contain xl:object-cover overflow-visible' src="/images/bg-1.png" alt="" />
       </motion.div>
-      <motion.div style={{ y: bg2Y }} className='absolute w-full h-[40%] top-[28%] translate-y-3/4 max-xl:top-[20%] max-lg:translate-y-[65%] max-md:top-[2%] max-[442px]:top-[6%] z-20'>
+      <motion.div style={{ y: bg2Y }} className='absolute w-full h-[40%] top-[24%] translate-y-3/4 max-xl:top-[20%] max-lg:translate-y-[65%] max-md:top-[0%] max-[442px]:top-[1%] z-20'>
         <img className='w-full h-full object-contain xl:object-cover overflow-visible' src="/images/bg-2.png" alt="" />
       </motion.div>
-      <motion.div style={{ y: bg3Y }} className='absolute  w-full h-[50%] top-[28%] translate-y-full max-xl:top-[20%] max-lg:translate-y-[90%] max-md:top-[0%] max-[442px]:top-[4%] z-30'>
+      <motion.div style={{ y: bg3Y }} className='absolute  w-full h-[50%] top-[24%] translate-y-full max-xl:top-[20%] max-lg:translate-y-[90%] max-md:-top-[2%] max-[442px]:-top-[1%] z-30'>
         <img className='w-full h-full object-contain xl:object-cover overflow-visible' src="/images/bg-3.png" alt="" />
       </motion.div>
-      <div className='absolute top-[24%] translate-y-1/2 left-64 max-xl:left-52 max-lg:left-40 max-md:top-[10%] max-md:left-12 max-[442px]:top-52'>
+      <div className='absolute top-[22%] translate-y-1/2 left-64 max-xl:left-52 max-lg:left-40 max-md:top-[10%] max-md:left-12 max-[442px]:top-52'>
         <div className='relative w-32'>
           <div className='absolute -left-8 top-0 max-[442px]:-left-1 max-[442px]:top-5 z-50'>
             <motion.img className='w-full h-full object-cover max-[442px]:w-20' src="/images/windmill-top.png" alt="Windmill Top" 
@@ -137,10 +140,10 @@ function Hero() {
           </motion.div>
         </div>
       </div>
-      <motion.div style={{ y: benefitsY}} className='-mb-[400px] max-xl:-mb-[320px] max-lg:-mb-[260px] max-md:-mb-[420px] max-[420px]:-mb-[420px] bg-benefits max-md:bg-ground bg-no-repeat bg-cover bg-top w-full h-full relative mt-36 max-xl:mt-0  max-md:mt-24 pb-72 max-lg:pb-36 z-50'>
-          <div className='container mx-auto max-md:w-11/12 px-8 max-md:px-0 flex flex-col items-center'>
-          <div className='bg-form bg-no-repeat flex flex-col justify-center items-center bg-contain py-0  bg-center w-540 max-md:w-full h-427 max-md:min-h-[427px] relative px-12  max-md:px-8 z-50 md:hidden  max-md:-mt-6'>
-            <div className='flex justify-center -mt-4 max-lg:mt-12 max-md:-mt-28 max-[592px]:-mt-6 '>
+      <motion.div style={{ y: benefitsY}} className='  bg-benefits max-md:bg-ground bg-no-repeat bg-cover overflow-hidden bg-top w-full h-full relative mt-36 max-xl:mt-0  max-md:mt-24  z-50'>
+          <div className='container mx-auto max-md:w-11/12 px-8 max-md:px-0 flex flex-col items-center '>
+          <div className='bg-form overflow-visible bg-no-repeat flex flex-col justify-center items-center bg-contain py-0  bg-center w-540 max-md:w-full h-427 max-md:min-h-[427px] relative px-12  max-md:px-8 z-50 md:hidden  max-md:-mt-6'>
+            <div className='flex justify-center -mt-4 max-lg:mt-12 max-md:-mt-28 max-[592px]:-mt-6 overflow-visible'>
               <img src="/images/form-title.png" alt="" />
             </div>
             <div className=' w-11/12 mt-4 max-lg:mt-0 max-md:mt-0 px-8 max-sm:px-0'>
@@ -182,7 +185,7 @@ function Hero() {
                 <div className='max-sm:w-1/2'>
                   <img className='w-full h-full object-cover' src="/images/benefit-1.png" alt="" />
                 </div>
-                <p className='font-lilitaOneRegular text-[#C0ED62] text-[28px] max-sm:text-base text-center text-nowrap max-xl:text-wrap'>Unlock a special skin <br className='max-xl:hidden'/> that's only available to <br className='max-xl:hidden'/> our waiting list <br className='max-xl:hidden'/> members!</p>
+                <p className='relative z-50 font-lilitaOneRegular text-[#C0ED62] text-[28px] max-sm:text-base text-center text-nowrap max-xl:text-wrap'>Unlock a special skin <br className='max-xl:hidden'/> that's only available to <br className='max-xl:hidden'/> our waiting list <br className='max-xl:hidden'/> members!</p>
               </motion.div>
               <motion.div 
               className='flex-1 flex flex-col items-center px-8'
@@ -210,12 +213,12 @@ function Hero() {
               </motion.div>
             </div>
           </div>
-          <div className='absolute bottom-0 max-sm:bottom-12 w-full'>
-            <img className='w-full h-full object-cover' src="/images/foreground.png" alt="" />
-          </div>
+          
       </motion.div>
       
-      
+      <div className='absolute bottom-0 max-sm:bottom-12 w-full z-30'>
+            <img className='w-full h-full object-cover' src="/images/foreground.png" alt="" />
+      </div>
 
     </div>
   )
