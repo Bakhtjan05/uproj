@@ -21,10 +21,13 @@ function Hero() {
     return () => window.removeEventListener('resize', checkScreenSize); // Убираем слушателя при размонтировании
   }, []);
 
-  const bg1Y = useTransform(scrollY, isMobile ? [0, 5000] : [0, 800], [0, -100]);
-  const bg2Y = useTransform(scrollY, isMobile ? [0, 5000] : [0, 800], [0, -150]);
-  const bg3Y = useTransform(scrollY, isMobile ? [0, 5000] : [0, 800], [0, -200]);
-  const benefitsY = useTransform(scrollY, [0, 1000], [0, 50]);
+  
+  const bg1Y = useTransform(scrollY, isMobile ? [0, 5000] : [0, 1800], [0, -100]);
+  const bg2Y = useTransform(scrollY, isMobile ? [0, 5000] : [0, 1800], [0, -150]);
+  const bg3Y = useTransform(scrollY, isMobile ? [0, 5000] : [0, 1800], [0, -500]);
+  const benefitsY = useTransform(scrollY, [0, 1000], [0, -50]);
+
+  
 
   const controls1 = useAnimation();
   const controls2 = useAnimation();
@@ -93,7 +96,7 @@ function Hero() {
       <motion.div style={{ y: bg3Y }} className='absolute  w-full h-[50%] top-[26%] translate-y-full max-xl:top-[20%] max-lg:translate-y-[90%] max-md:-top-[5%] max-[442px]:-top-[4%] z-30'>
         <img className='w-full h-full object-contain xl:object-cover overflow-visible' src="/images/bg-3.png" alt="" />
       </motion.div>
-      <div className='absolute top-[23%] translate-y-1/2 left-64 max-xl:left-52 max-lg:left-40 max-md:top-[10%] max-md:left-12 max-[442px]:top-52'>
+      <div className='absolute top-[24%] translate-y-1/2 left-64 max-xl:left-52 max-lg:left-40 max-md:top-[10%] max-md:left-12 max-[442px]:top-52'>
         <div className='relative w-32'>
           <div className='absolute -left-8 top-0 max-[442px]:-left-1 max-[442px]:top-5 z-50'>
             <motion.img className='w-full h-full object-cover max-[442px]:w-20' src="/images/windmill-top.png" alt="Windmill Top" 
@@ -111,10 +114,10 @@ function Hero() {
           <h2 className='text-xl text-white font-interBlack'>MIR STUDIOS</h2>
         </div>
         <div className='flex gap-16 justify-between items-center mt-8 max-lg:mt-0 max-md:flex-col'>
-          <div className='relative z-50 max-md:mt-12'>
+          <motion.div  className='relative z-50 max-md:mt-12'>
             <img src="/images/logo.png" alt="" />
-          </div>
-          <div className='bg-form bg-no-repeat bg-contain bg-center  w-540 h-427 relative px-12 z-50 max-md:hidden'>
+          </motion.div>
+          <motion.div  className='bg-form  bg-no-repeat bg-contain bg-center  w-540 h-427 relative px-12 z-50 max-md:hidden'>
             <div className='flex justify-center -mt-4 max-lg:mt-12'>
               <img src="/images/form-title.png" alt="" />
             </div>
@@ -131,10 +134,10 @@ function Hero() {
                 <img src="/images/button.png" alt="" />
               </button>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
-      <motion.div style={{ y: benefitsY }} className=' bg-benefits max-md:bg-ground bg-no-repeat bg-cover bg-top w-full h-full relative mt-36 max-xl:mt-0  max-md:mt-24 pb-72 max-lg:pb-36 z-50'>
+      <motion.div style={{ y: benefitsY}} className='-mb-[50px] bg-benefits max-md:bg-ground bg-no-repeat bg-cover bg-top w-full h-full relative mt-36 max-xl:mt-0  max-md:mt-24 pb-72 max-lg:pb-36 z-50'>
           <div className='container mx-auto max-md:w-11/12 px-8 max-md:px-0 flex flex-col items-center'>
           <div className='bg-form bg-no-repeat flex flex-col justify-center items-center bg-contain py-0  bg-center w-540 max-md:w-full h-427 max-md:min-h-[427px] relative px-12  max-md:px-8 z-50 md:hidden  max-md:-mt-6'>
             <div className='flex justify-center -mt-4 max-lg:mt-12 max-md:-mt-28 max-[592px]:-mt-6 '>
