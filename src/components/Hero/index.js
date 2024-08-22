@@ -22,7 +22,7 @@ function Hero() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    setRecaptchaVisible(true); // Показать ReCAPTCHA при отправке формы
+    setRecaptchaVisible(true); 
   };
 
   const onRecaptchaChange = (value) => {
