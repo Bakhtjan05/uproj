@@ -2,26 +2,26 @@ import axios from 'axios';
 
 export default async function handler(req, res) {
   if (req.method === 'POST') {
-    const { name, email, folderId } = req.body;
+    const { name, email } = req.body;
 
-    if (!name || !email || !folderId) {
+    if (!name || !email) {
       return res.status(400).json({ message: 'Name, email, and folderId are required' });
     }
 
     try {
       // Отправляем POST-запрос к Brevo API для добавления контакта в список
       const response = await axios.post(
-        'https://api.brevo.com/v3/contacts/lists',
+        'https://api.brevo.com/v3/contacts',
         {
           // Измените данные на ту схему, которая требуется в Brevo
           // В данном случае мы отправляем данные так, как это делается в Postman
+          listIds: [9],
           name: name,
           email: email,
-          folderId: folderId
         },
         {
           headers: {
-            'api-key': process.env.NEXT_PUBLIC_BREVO_API_KEY,
+            'api-key': process.env.BREVO_API_KEY,
             'Content-Type': 'application/json',
           },
         }

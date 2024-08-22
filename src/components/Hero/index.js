@@ -34,9 +34,9 @@ function Hero() {
   const addContactToList = async () => {
     try {
       const response = await axios.post('/api/send-email', {
+        listIds: [9],
         name: name,
         email: email,
-        folderId: 1 // Передаем folderId
       });
       console.log('Server response:', response.data);
       alert('Contact added to list successfully!');
