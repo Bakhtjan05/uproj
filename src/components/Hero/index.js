@@ -2,31 +2,51 @@ import React, {useEffect, useState} from 'react'
 import ReCAPTCHA from 'react-google-recaptcha';
 import { motion, useScroll, useTransform, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+import axios from 'axios';
+
+
+
 
 
 
 function Hero() {
   const [isMobile, setIsMobile] = useState(false);
+  const [recaptchaVisible, setRecaptchaVisible] = useState(false); // Состояние видимости ReCAPTCHA
 
   const { scrollY } = useScroll();
 
-  const [recaptchaToken, setRecaptchaToken] = useState(null);
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
 
-    if (!recaptchaToken) {
-      alert('Please verify that you are not a robot.');
-      return;
-    }
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-    // Handle form submission logic here
-    console.log('Form submitted with reCAPTCHA token:', recaptchaToken);
+    setRecaptchaVisible(true); // Показать ReCAPTCHA при отправке формы
   };
 
-  const onRecaptchaChange = (token) => {
-    setRecaptchaToken(token);
-  }
+  const onRecaptchaChange = (value) => {
+    console.log('Captcha value:', value);
+    setRecaptchaVisible(false); // Скрыть ReCAPTCHA после прохождения
+    addContactToList(); // Вызвать функцию отправки email после прохождения ReCAPTCHA
+  };
+
+  const addContactToList = async () => {
+    try {
+      const response = await axios.post('/api/send-email', {
+        name: name,
+        email: email,
+        folderId: 1 // Передаем folderId
+      });
+      console.log('Server response:', response.data);
+      alert('Contact added to list successfully!');
+    } catch (error) {
+      console.error('Error adding contact:', error);
+      alert('Failed to add contact to list');
+    }
+  };
+  
+
   useEffect(() => {
     const checkScreenSize = () => {
       setIsMobile(window.innerWidth < 768);
@@ -146,27 +166,34 @@ function Hero() {
               <div className='bg-input-field bg-contain bg-center bg-no-repeat py-1 ps-8 pe-5'>
                 <input
                   className='w-full h-full font-lilitaOneRegular text-input placeholder:text-place-holder focus:placeholder-transparent text-xl py-5 bg-transparent border-none outline-none focus:border-none ' type="text" placeholder='ENTER FULL NAME'
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
                   required
                   />
               </div>
               <div className='bg-input-field bg-contain bg-center bg-no-repeat py-1 ps-8 pe-5 mt-3 max-lg:mt-0'>
                 <input 
                 className='w-full h-full font-lilitaOneRegular text-input placeholder:text-place-holder focus:placeholder-transparent text-xl py-5 bg-transparent border-none outline-none focus:border-none ' type="email" placeholder='ENTER EMAIL'
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 required
                 />
               </div>
-              <div className='mt-4'>
-                  <ReCAPTCHA
-                    sitekey="6Ld05isqAAAAAHmMvuZmxZc4ivTshAUhvojRQUdR"
-                    onChange={onRecaptchaChange}
-                 />
-            </div>
-            </form>
+              {recaptchaVisible && (
+              <div className='mt-2 ps-3'>
+                <ReCAPTCHA
+                sitekey="6Le1NCwqAAAAAHD2Rm-4cOCQbs86Mi46J8mBd7Z6"
+               onChange={onRecaptchaChange}
+                   />
+                </div>
+              )}
             <div className='flex justify-center mt-4 max-lg:mt-0'>
-              <button>
+              <button type="submit">
                 <img src="/images/button.png" alt="" />
               </button>
             </div>
+            </form>
+            
           </motion.div>
         </div>
       </div>
@@ -176,19 +203,33 @@ function Hero() {
             <div className='flex justify-center -mt-4 max-lg:mt-12 max-md:-mt-28 max-[592px]:-mt-6 overflow-visible'>
               <img src="/images/form-title.png" alt="" />
             </div>
-            <div className=' w-11/12 mt-4 max-lg:mt-0 max-md:mt-0 px-8 max-sm:px-0'>
+            <form onSubmit={handleSubmit} className=' w-11/12 mt-4 max-lg:mt-0 max-md:mt-0 px-8 max-sm:px-0'>
               <div className='w-full bg-input-field bg-contain bg-center bg-no-repeat py-1 ps-8 pe-5 '>
-                <input className='w-full h-full  font-lilitaOneRegular text-input placeholder:text-place-holder focus:placeholder-transparent text-xl py-5 bg-transparent border-none outline-none focus:border-none ' type="text" placeholder='ENTER FULL NAME'/>
+                <input value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  required
+                   className='w-full h-full  font-lilitaOneRegular text-input placeholder:text-place-holder focus:placeholder-transparent text-xl py-5 bg-transparent border-none outline-none focus:border-none ' type="text" placeholder='ENTER FULL NAME'/>
               </div>
               <div className='w-full bg-input-field bg-contain bg-center bg-no-repeat py-1 ps-8 pe-5 mt-3 max-lg:mt-0 max-md:mt-0'>
-                <input className='w-full h-full font-lilitaOneRegular text-input placeholder:text-place-holder focus:placeholder-transparent text-xl py-5 bg-transparent border-none outline-none focus:border-none ' type="email" placeholder='ENTER EMAIL'/>
+                <input value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                   className='w-full h-full font-lilitaOneRegular text-input placeholder:text-place-holder focus:placeholder-transparent text-xl py-5 bg-transparent border-none outline-none focus:border-none ' type="email" placeholder='ENTER EMAIL'/>
               </div>
-            </div>
+              {recaptchaVisible && (
+              <div className='mt- ps-3'>
+                <ReCAPTCHA
+                  sitekey="6Le1NCwqAAAAAHD2Rm-4cOCQbs86Mi46J8mBd7Z6"
+                  onChange={onRecaptchaChange}
+                   />
+                </div>
+              )}
             <div className='flex justify-center mt-4 max-lg:mt-0'>
-              <button className='max-sm:w-3/4'>
+              <button type="submit" className='max-sm:w-3/4'>
                 <img className='w-full h-full object-cover' src="/images/button.png" alt="" />
               </button>
             </div>
+            </form>
           </div>
             <div className='w-full flex justify-between items-end relative max-xl:mt-28 max-md:-mt-8'>
               <div className='flex-1 max-lg:flex-auto max-md:flex-1 max-md:-ms-4'>
