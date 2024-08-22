@@ -217,12 +217,16 @@ function Hero() {
                    className='w-full h-full font-lilitaOneRegular text-input placeholder:text-place-holder focus:placeholder-transparent text-xl py-5 bg-transparent border-none outline-none focus:border-none ' type="email" placeholder='ENTER EMAIL'/>
               </div>
               {recaptchaVisible && (
-              <div className='mt- ps-3'>
-                <ReCAPTCHA
-                  sitekey="6Le1NCwqAAAAAHD2Rm-4cOCQbs86Mi46J8mBd7Z6"
-                  onChange={onRecaptchaChange}
-                   />
+              <div className='mb-2 ps-3 max-md:ps-0 overflow-hidden w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl mx-auto'>
+              <div className='w-full flex justify-center'>
+                <div className='w-full max-w-xs scale-75 md:scale-100'>
+                  <ReCAPTCHA
+                    sitekey="6Le1NCwqAAAAAHD2Rm-4cOCQbs86Mi46J8mBd7Z6"
+                    onChange={onRecaptchaChange}
+                  />
                 </div>
+              </div>
+            </div>
               )}
             <div className='flex justify-center mt-4 max-lg:mt-0'>
               <button type="submit" className='max-sm:w-3/4'>
