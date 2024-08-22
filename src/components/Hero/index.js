@@ -33,7 +33,7 @@ function Hero() {
 
   const addContactToList = async () => {
     try {
-      const response = await axios.post('/api/send-email', {
+      const response = await axios.post('uproj.vercel.app/api/send-email', {
         listIds: [9],
         name: name,
         email: email,
