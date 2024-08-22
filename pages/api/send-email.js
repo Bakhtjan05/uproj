@@ -21,7 +21,7 @@ export default async function handler(req, res) {
         },
         {
           headers: {
-            'api-key': process.env.BREVO_API_KEY,
+            'api-key': process.env.NEXT_PUBLIC_BREVO_API_KEY,
             'Content-Type': 'application/json',
           },
         }
