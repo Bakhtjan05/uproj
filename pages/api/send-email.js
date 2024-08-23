@@ -5,7 +5,7 @@ export default async function handler(req, res) {
     const { name, email } = req.body;
 
     if (!name || !email) {
-      return res.status(400).json({ message: 'Name, email, and folderId are required' });
+      return res.status(400).json({ message: 'Name, email are required' });
     }
 
     try {
@@ -13,11 +13,11 @@ export default async function handler(req, res) {
       const response = await axios.post(
         'https://api.brevo.com/v3/contacts',
         {
-          // Измените данные на ту схему, которая требуется в Brevo
-          // В данном случае мы отправляем данные так, как это делается в Postman
-          listIds: [9],
-          name: name,
           email: email,
+          attributes: {
+          firstName: name
+           },
+          listIds: [9]
         },
         {
           headers: {

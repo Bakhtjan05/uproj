@@ -8,6 +8,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      cursor: {
+        "custom": 'url(/icons/cursor.png), auto'
+      },
       backgroundImage: {
         'form': 'url("/images/formbg.png")',
         'input-field': 'url("/images/input-field.png")',
@@ -17,6 +20,12 @@ module.exports = {
         'bg-3': 'url("/images/bg-3.png")',
         'benefits': 'url("/images/benefits-bg.png")',
         'ground': 'url(/images/ground.png)',
+        'button': 'url(/images/button.png)',
+        'button-hover': 'url(/images/btn-hover.png)',
+        'button-active': 'url(/images/btn-active.png)',
+        'success': 'url(/images/success.png)',
+        'registered': 'url(/images/registered.png)',
+        'error': 'url(/images/error.png)',
       },
       width: {
         "540": "540px"

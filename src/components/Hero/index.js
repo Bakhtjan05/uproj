@@ -18,11 +18,15 @@ function Hero() {
 
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
+  const [status, setStatus] = useState(null); // Состояние для отображения блоков
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     setRecaptchaVisible(true); 
+
+    
   };
 
   const onRecaptchaChange = (value) => {
@@ -33,16 +37,17 @@ function Hero() {
 
   const addContactToList = async () => {
     try {
-      const response = await axios.post('/api/send-email', {
-        listIds: [9],
-        name: name,
-        email: email,
-      });
+      const response = await axios.post('/api/send-email', { name, email });
       console.log('Server response:', response.data);
-      alert('Contact added to list successfully!');
+      setStatus('success'); // Успешное добавление
     } catch (error) {
       console.error('Error adding contact:', error);
-      alert('Failed to add contact to list');
+
+      if (error.response && error.response.status === 500) {
+        setStatus('exists'); // Email уже существует
+      } else {
+        setStatus('error'); // Общая ошибка
+      }
     }
   };
   
@@ -63,6 +68,8 @@ function Hero() {
   const bg1Y = useTransform(scrollY, isMobile ? [0, 3000] : [0, 3000], [0, -550]);
   const bg2Y = useTransform(scrollY, isMobile ? [0, 3000] : [0, 3000], [0, -750]);
   const bg3Y = useTransform(scrollY, isMobile ? [0, 3000] : [0, 3000], [0, -1000]);
+  const logoY = useTransform(scrollY, isMobile ? [0, 5000] : [0, 4000], [0, -1000]);
+  const formY = useTransform(scrollY, isMobile ? [0, 8000] : [0, 4000], isMobile ? [0, -100] : [0, -800]);
   const benefitsY = useTransform(scrollY, [0, 1000], [0, -300]);
 
   
@@ -150,15 +157,42 @@ function Hero() {
        </div>
       </div>
       
-      <div className='container mx-auto max-md:w-11/12 px-16 max-xl:px-4'>
+      <div className='container relative mx-auto max-md:w-11/12 px-16 max-xl:px-4'>
+      {status === "success" && (
+        <div className='max-md:hidden absolute bg-success bg-contain bg-no-repeat bg-center top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[60] font-lilitaOneRegular text-center py-14 px-16 max-xl:py-5 max-xl:px-6 max-lg:py-0 max-lg:w-3/5'>
+        <div className='relative py-14 px-16 max-xl:py-8 max-xl:px-6 max-lg:py-3 max-lg:px-0'>
+          <h1 className='text-[42px] max-xl:text-[32px] max-lg:text-[24px] max-sm:text-[16px] text-[#0C360A]'>Successful</h1>
+          <p className='text-[24px] max-xl:text-[20px] max-lg:text-[16px] max-sm:text-[12px] text-[#445930]'>Congratulations! You have been successfully added to our waiting list. We'll keep you updated with our latest news.</p>
+          <button onClick={() => setStatus(null)} className='absolute left-1/2 -translate-x-1/2 -bottom-4 translate-y-1/2 text-[28px] max-xl:text-[22px] max-lg:text-[18px] max-sm:text-[14px] text-[#0C360A] bg-[#E6FFC6] hover:bg-[#bad596] border-[12px] max-lg:border-[8px] border-[#0C360A] py-4 px-24 max-xl:px-20 max-lg:py-2 max-lg:px-9 max-lg:bottom-3 max-sm:px-6 max-sm:border-4 max-sm:py-1'>Thanks</button>
+        </div>
+      </div>
+      )}
+      {status === "exists" && (
+        <div className='max-md:hidden absolute bg-success bg-contain bg-no-repeat bg-center top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[60] font-lilitaOneRegular text-center py-14 px-16 max-xl:py-5 max-xl:px-6 max-lg:py-0 max-lg:w-3/5'>
+        <div className='relative py-14 px-16 max-xl:py-8 max-xl:px-6 max-lg:py-3 max-lg:px-0'>
+          <h1 className='text-[42px] max-xl:text-[32px] max-lg:text-[24px] max-sm:text-[16px] text-[#0C360A]'>Already Registered</h1>
+          <p className='text-[24px] max-xl:text-[20px] max-lg:text-[16px] max-sm:text-[12px] text-[#445930]'>You are already Registered.</p>
+          <button onClick={() => setStatus(null)} className='absolute left-1/2 -translate-x-1/2 -bottom-4 translate-y-1/2 text-[28px] max-xl:text-[22px] max-lg:text-[18px] max-sm:text-[14px] text-[#0C360A] bg-[#E6FFC6] hover:bg-[#bad596] border-[12px] max-lg:border-[8px] border-[#0C360A] py-4 px-24 max-xl:px-20 max-lg:py-2 max-lg:px-9 max-lg:bottom-3 max-sm:px-6 max-sm:border-4 max-sm:py-1'>Got It</button>
+        </div>
+      </div>
+      )}
+      {status === "error" && (
+        <div className='max-md:hidden absolute bg-success bg-contain bg-no-repeat bg-center top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[60] font-lilitaOneRegular text-center py-14 px-16 max-xl:py-5 max-xl:px-6 max-lg:py-0 max-lg:w-3/5'>
+        <div className='relative py-14 px-16 max-xl:py-8 max-xl:px-6 max-lg:py-3 max-lg:px-0'>
+          <h1 className='text-[42px] max-xl:text-[32px] max-lg:text-[24px] max-sm:text-[16px] text-[#0C360A]'>Error</h1>
+          <p className='text-[24px] max-xl:text-[20px] max-lg:text-[16px] max-sm:text-[12px] text-[#445930]'>There some problem either try with different name & email or try with different email.</p>
+          <button onClick={() => setStatus(null)} className='absolute left-1/2 -translate-x-1/2 -bottom-4 translate-y-1/2 text-[28px] max-xl:text-[22px] max-lg:text-[18px] max-sm:text-[14px] text-[#0C360A] bg-[#E6FFC6] hover:bg-[#bad596] border-[12px] max-lg:border-[8px] border-[#0C360A] py-4 px-24 max-xl:px-20 max-lg:py-2 max-lg:px-9 max-lg:bottom-3 max-sm:px-6 max-sm:border-4 max-sm:py-1'>Okay</button>
+        </div>
+      </div>
+      )}
         <div className='mt-10 max-xl:mt-3  max-md:flex max-md:justify-center'>
           <h2 className='text-xl text-white font-interBlack'>MIR STUDIOS</h2>
         </div>
         <div className='flex gap-16 justify-between items-center mt-8 max-lg:mt-0 max-md:flex-col'>
-          <motion.div  className='relative z-50 max-md:mt-12'>
+          <motion.div style={{ y: logoY }} className='relative z-50 max-md:mt-12'>
             <img src="/images/logo.png" alt="" />
           </motion.div>
-          <motion.div  className='bg-form  bg-no-repeat bg-contain bg-center  w-540 h-427 relative px-12 z-50 max-md:hidden'>
+          <motion.div style={{ y: formY }}  className='bg-form  bg-no-repeat bg-contain bg-center  w-540 h-427 relative px-12 z-50 max-md:hidden'>
             <div className='flex justify-center -mt-4 max-lg:mt-12'>
               <img src="/images/form-title.png" alt="" />
             </div>
@@ -180,16 +214,20 @@ function Hero() {
                 />
               </div>
               {recaptchaVisible && (
-              <div className='mt-2 ps-3'>
-                <ReCAPTCHA
-                sitekey="6Le1NCwqAAAAAHD2Rm-4cOCQbs86Mi46J8mBd7Z6"
-               onChange={onRecaptchaChange}
-                   />
+              <div className="mb-2 mt-2 flex  justify-center items-center ">
+              <div className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl flex justify-center">
+                <div className=" scale-75 sm:scale-100 md:scale-100 lg:scale-100 xl:scale-100">
+                  <ReCAPTCHA
+                    sitekey="6Le1NCwqAAAAAHD2Rm-4cOCQbs86Mi46J8mBd7Z6"
+                    onChange={onRecaptchaChange}
+                  />
                 </div>
+              </div>
+            </div>
               )}
             <div className='flex justify-center mt-4 max-lg:mt-0'>
-              <button type="submit">
-                <img src="/images/button.png" alt="" />
+              <button className='bg-button hover:bg-button-hover active:bg-button-active bg-contain w-4/5  bg-no-repeat h-24' type="submit">
+                
               </button>
             </div>
             </form>
@@ -197,9 +235,36 @@ function Hero() {
           </motion.div>
         </div>
       </div>
-      <motion.div style={{ y: benefitsY}} className='max-md:-mb-36  bg-benefits max-md:bg-ground bg-no-repeat bg-cover overflow-hidden bg-top w-full h-full relative mt-36 max-xl:mt-0  max-md:mt-24  z-50'>
-          <div className='container mx-auto max-md:w-11/12 px-8 max-md:px-0 flex flex-col items-center '>
-          <div className='bg-form overflow-visible bg-no-repeat flex flex-col justify-center items-center bg-contain py-0  bg-center w-540 max-md:w-full h-427 max-md:min-h-[427px] relative px-12  max-md:px-8 z-50 md:hidden  max-md:-mt-6'>
+      <motion.div style={{ y: benefitsY}} className='max-md:-mb-36  bg-benefits max-md:bg-ground bg-no-repeat bg-cover overflow-hidden bg-top w-full h-full relative mt-36 max-xl:mt-0  max-md:mt-24  z-40'>
+          <div className='container mx-auto max-md:w-11/12 px-8 max-md:px-0 flex flex-col items-center relative'>
+          {status === "success" && (
+              <div className='md:hidden absolute bg-success bg-contain  bg-no-repeat bg-center top-[10%] left-1/2 -translate-x-1/2 -translate-y-1/2 z-[70] font-lilitaOneRegular text-center py-14 px-16 max-xl:py-5 max-xl:px-6 max-lg:py-5 max-lg:px-10 max-lg:w-4/5 max-lg:h-[200px] '>
+              <div className='relative py-14 px-16 max-xl:py-8 max-xl:px-6 max-lg:py-8 max-lg:px-0 '>
+             <h1 className='text-[42px] max-xl:text-[32px] max-lg:text-[24px] max-sm:text-[16px] text-[#0C360A]'>Successful</h1>
+               <p className='text-[24px] max-xl:text-[20px] max-lg:text-[16px] max-sm:text-[12px] text-[#445930]'>Congratulations! You have been successfully added to our waiting list. We'll keep you updated with our latest news.</p>
+             <button onClick={() => setStatus(null)} className='absolute left-1/2 -translate-x-1/2 -bottom-4 translate-y-1/2 text-[28px] max-xl:text-[22px] max-lg:text-[18px] max-sm:text-[14px] text-[#0C360A] bg-[#E6FFC6] hover:bg-[#bad596] border-[12px] max-lg:border-[8px] border-[#0C360A] py-4 px-24 max-xl:px-20 max-lg:py-2 max-lg:px-9 max-lg:bottom-0 max-sm:px-6 max-sm:border-4 max-sm:py-1'>Thanks</button>
+              </div>
+            </div>
+      )}
+      {status === "success" && (
+              <div className='md:hidden absolute bg-success bg-contain  bg-no-repeat bg-center top-[10%] left-1/2 -translate-x-1/2 -translate-y-1/2 z-[70] font-lilitaOneRegular text-center py-14 px-16 max-xl:py-5 max-xl:px-6 max-lg:py-5 max-lg:px-10 max-lg:w-4/5 max-lg:h-[200px] '>
+              <div className='relative py-14 px-16 max-xl:py-8 max-xl:px-6 max-lg:py-8 max-lg:px-0 '>
+             <h1 className='text-[42px] max-xl:text-[32px] max-lg:text-[24px] max-sm:text-[16px] text-[#0C360A]'>Already Registered</h1>
+               <p className='text-[24px] max-xl:text-[20px] max-lg:text-[16px] max-sm:text-[12px] text-[#445930]'>You are already Registered.</p>
+             <button onClick={() => setStatus(null)} className='absolute left-1/2 -translate-x-1/2 -bottom-4 translate-y-1/2 text-[28px] max-xl:text-[22px] max-lg:text-[18px] max-sm:text-[14px] text-[#0C360A] bg-[#E6FFC6] hover:bg-[#bad596] border-[12px] max-lg:border-[8px] border-[#0C360A] py-4 px-24 max-xl:px-20 max-lg:py-2 max-lg:px-9 max-lg:bottom-0 max-sm:px-6 max-sm:border-4 max-sm:py-1'>Got It</button>
+              </div>
+            </div>
+      )}
+      {status === "success" && (
+              <div className='md:hidden absolute bg-success bg-contain  bg-no-repeat bg-center top-[10%] left-1/2 -translate-x-1/2 -translate-y-1/2 z-[70] font-lilitaOneRegular text-center py-14 px-16 max-xl:py-5 max-xl:px-6 max-lg:py-5 max-lg:px-10 max-lg:w-4/5 max-lg:h-[200px] '>
+              <div className='relative py-14 px-16 max-xl:py-8 max-xl:px-6 max-lg:py-8 max-lg:px-0 '>
+             <h1 className='text-[42px] max-xl:text-[32px] max-lg:text-[24px] max-sm:text-[16px] text-[#0C360A]'>Error</h1>
+               <p className='text-[24px] max-xl:text-[20px] max-lg:text-[16px] max-sm:text-[12px] text-[#445930]'>There some problem either try with different name & email or try with different email.</p>
+             <button onClick={() => setStatus(null)} className='absolute left-1/2 -translate-x-1/2 -bottom-4 translate-y-1/2 text-[28px] max-xl:text-[22px] max-lg:text-[18px] max-sm:text-[14px] text-[#0C360A] bg-[#E6FFC6] hover:bg-[#bad596] border-[12px] max-lg:border-[8px] border-[#0C360A] py-4 px-24 max-xl:px-20 max-lg:py-2 max-lg:px-9 max-lg:bottom-0 max-sm:px-6 max-sm:border-4 max-sm:py-1'>Okay</button>
+              </div>
+            </div>
+      )}
+          <motion.div style={{ y: formY }} className='bg-form overflow-visible bg-no-repeat flex flex-col justify-center items-center bg-contain py-0  bg-center w-540 max-md:w-full h-427 max-md:min-h-[427px] relative px-12  max-md:px-8 z-50 md:hidden  max-md:-mt-6'>
             <div className='flex justify-center -mt-4 max-lg:mt-12 max-md:-mt-28 max-[592px]:-mt-6 overflow-visible'>
               <img src="/images/form-title.png" alt="" />
             </div>
@@ -210,16 +275,16 @@ function Hero() {
                   required
                    className='w-full h-full  font-lilitaOneRegular text-input placeholder:text-place-holder focus:placeholder-transparent text-xl py-5 bg-transparent border-none outline-none focus:border-none ' type="text" placeholder='ENTER FULL NAME'/>
               </div>
-              <div className='w-full bg-input-field bg-contain bg-center bg-no-repeat py-1 ps-8 pe-5 mt-3 max-lg:mt-0 max-md:mt-0'>
+              <div className='w-full bg-input-field bg-contain bg-center bg-no-repeat py-1 ps-8 pe-5 mt-3 max-lg:mt-0'>
                 <input value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
                    className='w-full h-full font-lilitaOneRegular text-input placeholder:text-place-holder focus:placeholder-transparent text-xl py-5 bg-transparent border-none outline-none focus:border-none ' type="email" placeholder='ENTER EMAIL'/>
               </div>
               {recaptchaVisible && (
-              <div className='mb-2 ps-3 max-md:ps-0 overflow-hidden w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl mx-auto'>
-              <div className='w-full flex justify-center'>
-                <div className='w-full max-w-xs scale-75 md:scale-100'>
+              <div className="mb-0 flex  justify-center items-center ">
+              <div className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl flex justify-center">
+                <div className=" scale-75 sm:scale-100 md:scale-100 lg:scale-100 xl:scale-100">
                   <ReCAPTCHA
                     sitekey="6Le1NCwqAAAAAHD2Rm-4cOCQbs86Mi46J8mBd7Z6"
                     onChange={onRecaptchaChange}
@@ -227,6 +292,7 @@ function Hero() {
                 </div>
               </div>
             </div>
+            
               )}
             <div className='flex justify-center mt-4 max-lg:mt-0'>
               <button type="submit" className='max-sm:w-3/4'>
@@ -234,7 +300,7 @@ function Hero() {
               </button>
             </div>
             </form>
-          </div>
+          </motion.div>
             <div className='w-full flex justify-between items-end relative max-xl:mt-28 max-md:-mt-8'>
               <div className='flex-1 max-lg:flex-auto max-md:flex-1 max-md:-ms-4'>
                 <img className=' ' src="/gif/cabbie.gif" alt="" />

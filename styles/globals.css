@@ -3,11 +3,6 @@
 @tailwind utilities;
 
 
-body {
-
-  background: linear-gradient(180deg, #59C3FF 0%, #88D8F0 30.67%);
- 
-}
 
 
 
@@ -20,5 +15,26 @@ body {
 @font-face {
   font-family: "InterBlack";
   src: url("/fonts/Inter-Black.ttf") format("opentype");
+}
+
+
+body {
+
+  background: linear-gradient(180deg, #59C3FF 0%, #88D8F0 30.67%);
+  cursor: url("/icons/cursor.png"), auto;
+  
+}
+
+input {
+  cursor: url("/icons/cursor.png"), auto;
+}
+
+button {
+  cursor: url("/icons/cursor.png"), auto;
+}
+
+.rec-block {
+  display: flex;
+  justify-content: center;
 }
 
