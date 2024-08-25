@@ -27,6 +27,7 @@ function Hero() {
     setRecaptchaVisible(true); 
 
     
+    
   };
 
   const onRecaptchaChange = (value) => {
@@ -40,6 +41,8 @@ function Hero() {
       const response = await axios.post('/api/send-email', { name, email });
       console.log('Server response:', response.data);
       setStatus('success'); // Успешное добавление
+      setName(''); // Очистить поле имени
+      setEmail(''); // Очистить поле email
     } catch (error) {
       console.error('Error adding contact:', error);
 
@@ -119,6 +122,15 @@ function Hero() {
   
   return (
     <div className=' relative overflow-hidden'>
+      {status === "success" && (
+        <div className='absolute inset-0 w-full h-full bg-[#133400] opacity-80 z-[80]'></div>
+      )}
+      {status === "exists" && (
+        <div className='absolute inset-0 w-full h-full bg-[#133400] opacity-80 z-[80]'></div>
+      )}
+      {status === "error" && (
+        <div className='absolute inset-0 w-full h-full bg-[#133400] opacity-80 z-[80]'></div>
+      )}
       <div className='bg-[#19360F] absolute left-0 bottom-0 w-full h-1/3   z-20'>
 
       </div>
@@ -157,33 +169,39 @@ function Hero() {
        </div>
       </div>
       
-      <div className='container relative mx-auto max-md:w-11/12 px-16 max-xl:px-4'>
+      <div className='container relative mx-auto max-md:w-11/12 px-16 max-xl:px-4 '>
       {status === "success" && (
-        <div className='max-md:hidden absolute bg-success bg-contain bg-no-repeat bg-center top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[60] font-lilitaOneRegular text-center py-14 px-16 max-xl:py-5 max-xl:px-6 max-lg:py-0 max-lg:w-3/5'>
-        <div className='relative py-14 px-16 max-xl:py-8 max-xl:px-6 max-lg:py-3 max-lg:px-0'>
+          <div className=''>
+        <div className=' w-3/5  bg-success bg-contain bg-no-repeat bg-center fixed justify-center items-center left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 z-[90] font-lilitaOneRegular text-center py-14 px-28 max-xl:py-16 max-xl:px-6 max-lg:py-16 max-lg:w-3/4 max-sm:py-2 max-sm:px-4 '>
+        <div className='relative py-14 px-20 max-xl:py-8 max-xl:px-6 max-lg:py-7 max-lg:px-0'>
           <h1 className='text-[42px] max-xl:text-[32px] max-lg:text-[24px] max-sm:text-[16px] text-[#0C360A]'>Successful</h1>
           <p className='text-[24px] max-xl:text-[20px] max-lg:text-[16px] max-sm:text-[12px] text-[#445930]'>Congratulations! You have been successfully added to our waiting list. We'll keep you updated with our latest news.</p>
-          <button onClick={() => setStatus(null)} className='absolute left-1/2 -translate-x-1/2 -bottom-4 translate-y-1/2 text-[28px] max-xl:text-[22px] max-lg:text-[18px] max-sm:text-[14px] text-[#0C360A] bg-[#E6FFC6] hover:bg-[#bad596] border-[12px] max-lg:border-[8px] border-[#0C360A] py-4 px-24 max-xl:px-20 max-lg:py-2 max-lg:px-9 max-lg:bottom-3 max-sm:px-6 max-sm:border-4 max-sm:py-1'>Thanks</button>
+          <button onClick={() => setStatus(null)} className='absolute left-1/2 -translate-x-1/2 -bottom-10 translate-y-1/2 text-[28px] max-xl:text-[22px] max-lg:text-[18px] max-sm:text-[14px] text-[#0C360A] bg-[#E6FFC6] hover:bg-[#bad596] border-[12px] max-lg:border-[8px] border-[#0C360A] py-4 px-24 max-xl:px-20 max-lg:py-2 max-lg:px-9 max-lg:-bottom-8  max-sm:bottom-1 max-sm:px-6 max-sm:border-4 max-sm:py-1'>Thanks</button>
         </div>
       </div>
+          </div>
       )}
       {status === "exists" && (
-        <div className='max-md:hidden absolute bg-success bg-contain bg-no-repeat bg-center top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[60] font-lilitaOneRegular text-center py-14 px-16 max-xl:py-5 max-xl:px-6 max-lg:py-0 max-lg:w-3/5'>
+        <div>
+          <div className=' fixed bg-registered bg-contain bg-no-repeat bg-center w-3/5  top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[90] font-lilitaOneRegular text-center py-14 px-16 max-xl:py-5 max-xl:px-6 max-lg:py-12 max-lg:w-3/4'>
         <div className='relative py-14 px-16 max-xl:py-8 max-xl:px-6 max-lg:py-3 max-lg:px-0'>
           <h1 className='text-[42px] max-xl:text-[32px] max-lg:text-[24px] max-sm:text-[16px] text-[#0C360A]'>Already Registered</h1>
           <p className='text-[24px] max-xl:text-[20px] max-lg:text-[16px] max-sm:text-[12px] text-[#445930]'>You are already Registered.</p>
-          <button onClick={() => setStatus(null)} className='absolute left-1/2 -translate-x-1/2 -bottom-4 translate-y-1/2 text-[28px] max-xl:text-[22px] max-lg:text-[18px] max-sm:text-[14px] text-[#0C360A] bg-[#E6FFC6] hover:bg-[#bad596] border-[12px] max-lg:border-[8px] border-[#0C360A] py-4 px-24 max-xl:px-20 max-lg:py-2 max-lg:px-9 max-lg:bottom-3 max-sm:px-6 max-sm:border-4 max-sm:py-1'>Got It</button>
+          <button onClick={() => setStatus(null)} className='absolute left-1/2 -translate-x-1/2 bottom-0 translate-y-1/2 text-[28px] max-xl:text-[22px] max-lg:text-[18px] max-sm:text-[14px] text-[#0C360A] bg-[#E6FFC6] hover:bg-[#bad596] border-[12px] max-lg:border-[8px] border-[#0C360A] py-4 px-24 max-xl:px-20 max-lg:py-2 max-lg:px-9 max-lg:-bottom-7 max-sm:-bottom-3 max-sm:px-6 max-sm:border-4 max-sm:py-1 text-nowrap'>Got It</button>
         </div>
       </div>
+        </div>
       )}
       {status === "error" && (
-        <div className='max-md:hidden absolute bg-success bg-contain bg-no-repeat bg-center top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[60] font-lilitaOneRegular text-center py-14 px-16 max-xl:py-5 max-xl:px-6 max-lg:py-0 max-lg:w-3/5'>
+        <div>
+          <div className=' fixed bg-error bg-contain bg-no-repeat bg-center top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[90] font-lilitaOneRegular text-center py-14 px-16 max-xl:py-5 max-xl:px-6 max-lg:py-12 max-lg:w-3/4'>
         <div className='relative py-14 px-16 max-xl:py-8 max-xl:px-6 max-lg:py-3 max-lg:px-0'>
           <h1 className='text-[42px] max-xl:text-[32px] max-lg:text-[24px] max-sm:text-[16px] text-[#0C360A]'>Error</h1>
           <p className='text-[24px] max-xl:text-[20px] max-lg:text-[16px] max-sm:text-[12px] text-[#445930]'>There some problem either try with different name & email or try with different email.</p>
-          <button onClick={() => setStatus(null)} className='absolute left-1/2 -translate-x-1/2 -bottom-4 translate-y-1/2 text-[28px] max-xl:text-[22px] max-lg:text-[18px] max-sm:text-[14px] text-[#0C360A] bg-[#E6FFC6] hover:bg-[#bad596] border-[12px] max-lg:border-[8px] border-[#0C360A] py-4 px-24 max-xl:px-20 max-lg:py-2 max-lg:px-9 max-lg:bottom-3 max-sm:px-6 max-sm:border-4 max-sm:py-1'>Okay</button>
+          <button onClick={() => setStatus(null)} className='absolute left-1/2 -translate-x-1/2 -bottom-4 translate-y-1/2 text-[28px] max-xl:text-[22px] max-lg:text-[18px] max-sm:text-[14px] text-[#0C360A] bg-[#E6FFC6] hover:bg-[#bad596] border-[12px] max-lg:border-[8px] border-[#0C360A] py-4 px-24 max-xl:px-20 max-lg:py-2 max-lg:px-9 max-lg:-bottom-5 max-sm:px-6 max-sm:border-4 max-sm:py-1'>Okay</button>
         </div>
       </div>
+        </div>
       )}
         <div className='mt-10 max-xl:mt-3  max-md:flex max-md:justify-center'>
           <h2 className='text-xl text-white font-interBlack'>MIR STUDIOS</h2>
@@ -218,7 +236,7 @@ function Hero() {
               <div className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl flex justify-center">
                 <div className=" scale-75 sm:scale-100 md:scale-100 lg:scale-100 xl:scale-100">
                   <ReCAPTCHA
-                    sitekey="6Le1NCwqAAAAAHD2Rm-4cOCQbs86Mi46J8mBd7Z6"
+                    sitekey="6Lfc2y0qAAAAALN7cgc81jaV-HkbRmWm-0gvdtoN"
                     onChange={onRecaptchaChange}
                   />
                 </div>
@@ -226,45 +244,22 @@ function Hero() {
             </div>
               )}
             <div className='flex justify-center mt-4 max-lg:mt-0'>
-              <button className='bg-button hover:bg-button-hover active:bg-button-active bg-contain w-4/5  bg-no-repeat h-24' type="submit">
-                
-              </button>
+             
+              <div className='submit-btn w-4/5 h-16 relative mt-8' type="submit">
+                <div className='w-full h-[85%] bg-[#3C650E]  rounded-xl border-4 border-[#1B4006] flex justify-center absolute'>  
+               </div>
+                <button className='w-full h-full absolute -top-2 text-3xl font-lilitaOneRegular text-white rounded-xl border-4 border-[#1B4006] -mt-4' style={{ backgroundColor: 'rgba(192, 237, 98, 0.8)', textShadow: '4px 4px 2px rgba(27, 64, 6, 0.6)' }}>JOHN WISHLIST</button>   
+              </div>
+
             </div>
             </form>
             
           </motion.div>
         </div>
       </div>
-      <motion.div style={{ y: benefitsY}} className='max-md:-mb-36  bg-benefits max-md:bg-ground bg-no-repeat bg-cover overflow-hidden bg-top w-full h-full relative mt-36 max-xl:mt-0  max-md:mt-24  z-40'>
-          <div className='container mx-auto max-md:w-11/12 px-8 max-md:px-0 flex flex-col items-center relative'>
-          {status === "success" && (
-              <div className='md:hidden absolute bg-success bg-contain  bg-no-repeat bg-center top-[10%] left-1/2 -translate-x-1/2 -translate-y-1/2 z-[70] font-lilitaOneRegular text-center py-14 px-16 max-xl:py-5 max-xl:px-6 max-lg:py-5 max-lg:px-10 max-lg:w-4/5 max-lg:h-[200px] '>
-              <div className='relative py-14 px-16 max-xl:py-8 max-xl:px-6 max-lg:py-8 max-lg:px-0 '>
-             <h1 className='text-[42px] max-xl:text-[32px] max-lg:text-[24px] max-sm:text-[16px] text-[#0C360A]'>Successful</h1>
-               <p className='text-[24px] max-xl:text-[20px] max-lg:text-[16px] max-sm:text-[12px] text-[#445930]'>Congratulations! You have been successfully added to our waiting list. We'll keep you updated with our latest news.</p>
-             <button onClick={() => setStatus(null)} className='absolute left-1/2 -translate-x-1/2 -bottom-4 translate-y-1/2 text-[28px] max-xl:text-[22px] max-lg:text-[18px] max-sm:text-[14px] text-[#0C360A] bg-[#E6FFC6] hover:bg-[#bad596] border-[12px] max-lg:border-[8px] border-[#0C360A] py-4 px-24 max-xl:px-20 max-lg:py-2 max-lg:px-9 max-lg:bottom-0 max-sm:px-6 max-sm:border-4 max-sm:py-1'>Thanks</button>
-              </div>
-            </div>
-      )}
-      {status === "success" && (
-              <div className='md:hidden absolute bg-success bg-contain  bg-no-repeat bg-center top-[10%] left-1/2 -translate-x-1/2 -translate-y-1/2 z-[70] font-lilitaOneRegular text-center py-14 px-16 max-xl:py-5 max-xl:px-6 max-lg:py-5 max-lg:px-10 max-lg:w-4/5 max-lg:h-[200px] '>
-              <div className='relative py-14 px-16 max-xl:py-8 max-xl:px-6 max-lg:py-8 max-lg:px-0 '>
-             <h1 className='text-[42px] max-xl:text-[32px] max-lg:text-[24px] max-sm:text-[16px] text-[#0C360A]'>Already Registered</h1>
-               <p className='text-[24px] max-xl:text-[20px] max-lg:text-[16px] max-sm:text-[12px] text-[#445930]'>You are already Registered.</p>
-             <button onClick={() => setStatus(null)} className='absolute left-1/2 -translate-x-1/2 -bottom-4 translate-y-1/2 text-[28px] max-xl:text-[22px] max-lg:text-[18px] max-sm:text-[14px] text-[#0C360A] bg-[#E6FFC6] hover:bg-[#bad596] border-[12px] max-lg:border-[8px] border-[#0C360A] py-4 px-24 max-xl:px-20 max-lg:py-2 max-lg:px-9 max-lg:bottom-0 max-sm:px-6 max-sm:border-4 max-sm:py-1'>Got It</button>
-              </div>
-            </div>
-      )}
-      {status === "success" && (
-              <div className='md:hidden absolute bg-success bg-contain  bg-no-repeat bg-center top-[10%] left-1/2 -translate-x-1/2 -translate-y-1/2 z-[70] font-lilitaOneRegular text-center py-14 px-16 max-xl:py-5 max-xl:px-6 max-lg:py-5 max-lg:px-10 max-lg:w-4/5 max-lg:h-[200px] '>
-              <div className='relative py-14 px-16 max-xl:py-8 max-xl:px-6 max-lg:py-8 max-lg:px-0 '>
-             <h1 className='text-[42px] max-xl:text-[32px] max-lg:text-[24px] max-sm:text-[16px] text-[#0C360A]'>Error</h1>
-               <p className='text-[24px] max-xl:text-[20px] max-lg:text-[16px] max-sm:text-[12px] text-[#445930]'>There some problem either try with different name & email or try with different email.</p>
-             <button onClick={() => setStatus(null)} className='absolute left-1/2 -translate-x-1/2 -bottom-4 translate-y-1/2 text-[28px] max-xl:text-[22px] max-lg:text-[18px] max-sm:text-[14px] text-[#0C360A] bg-[#E6FFC6] hover:bg-[#bad596] border-[12px] max-lg:border-[8px] border-[#0C360A] py-4 px-24 max-xl:px-20 max-lg:py-2 max-lg:px-9 max-lg:bottom-0 max-sm:px-6 max-sm:border-4 max-sm:py-1'>Okay</button>
-              </div>
-            </div>
-      )}
-          <motion.div style={{ y: formY }} className='bg-form overflow-visible bg-no-repeat flex flex-col justify-center items-center bg-contain py-0  bg-center w-540 max-md:w-full h-427 max-md:min-h-[427px] relative px-12  max-md:px-8 z-50 md:hidden  max-md:-mt-6'>
+      <motion.div style={{ y: benefitsY}} className='max-md:-mb-36  bg-benefits max-md:bg-ground bg-no-repeat bg-cover overflow-hidden bg-top w-full h-full relative mt-36 max-xl:mt-0  max-md:mt-24  z-30 max-md:z-[70]'>
+          <div className='container mx-auto max-md:w-11/12 px-8 max-md:px-0 flex flex-col items-center'>
+          <motion.div style={{ y: formY }} className='bg-form overflow-visible bg-no-repeat flex flex-col justify-center items-center bg-contain py-0  bg-center w-540 max-md:w-full h-427 max-md:min-h-[427px] relative  px-12  max-md:px-8 z-50 md:hidden  max-md:-mt-6'>
             <div className='flex justify-center -mt-4 max-lg:mt-12 max-md:-mt-28 max-[592px]:-mt-6 overflow-visible'>
               <img src="/images/form-title.png" alt="" />
             </div>
@@ -286,7 +281,7 @@ function Hero() {
               <div className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl flex justify-center">
                 <div className=" scale-75 sm:scale-100 md:scale-100 lg:scale-100 xl:scale-100">
                   <ReCAPTCHA
-                    sitekey="6Le1NCwqAAAAAHD2Rm-4cOCQbs86Mi46J8mBd7Z6"
+                    sitekey="6Lfc2y0qAAAAALN7cgc81jaV-HkbRmWm-0gvdtoN"
                     onChange={onRecaptchaChange}
                   />
                 </div>
@@ -295,9 +290,11 @@ function Hero() {
             
               )}
             <div className='flex justify-center mt-4 max-lg:mt-0'>
-              <button type="submit" className='max-sm:w-3/4'>
-                <img className='w-full h-full object-cover' src="/images/button.png" alt="" />
-              </button>
+            <div className='submit-btn w-4/5 h-16 max-md:h-14 relative mt-8' type="submit">
+                <div className='w-full h-[85%] bg-[#3C650E]  rounded-xl border-4 border-[#1B4006] flex justify-center absolute'>  
+               </div>
+                <button className='w-full h-full absolute -top-2 max-md:-top-1 text-3xl max-md:text-xl font-lilitaOneRegular text-white  bg-[#C0ED62] rounded-xl border-4 border-[#1B4006] -mt-4' style={{ backgroundColor: 'rgba(192, 237, 98, 0.8)', textShadow: '4px 4px 2px rgba(27, 64, 6, 0.6)' }}>JOHN WISHLIST</button>   
+              </div>
             </div>
             </form>
           </motion.div>
