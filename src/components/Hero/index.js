@@ -115,11 +115,16 @@ function Hero() {
       </motion.div>
       <div className='absolute top-[22%] translate-y-1/2 left-64 max-xl:left-52 max-lg:left-40 max-md:top-[10%] max-md:left-12 max-[442px]:top-52'>
         <div className='relative w-32'>
-          <div className='absolute -left-8 top-0 max-[442px]:-left-1 max-[442px]:top-5 z-50'>
-            <motion.img className='w-full h-full object-cover max-[442px]:w-20' src="/images/windmill-top.png" alt="Windmill Top" 
-              animate={{ rotate: 360 }}
-              transition={{ repeat: Infinity, duration: 5, ease: "linear" }}/>
-          </div>
+          <motion.div 
+          animate={{ rotate: 360 }}
+          transition={{ repeat: Infinity, duration: 5, ease: "linear" }}
+          className='absolute -left-8 top-0 max-[442px]:-left-1 max-[442px]:top-5 z-50'>
+            <Image 
+            width={150}
+            height={100} 
+             className='w-full h-full object-cover max-[442px]:w-20' src="/images/windmill-top.png" alt="Windmill Top" 
+              />
+          </motion.div>
           <div className='absolute left-0 top-[50px] z-40'>
             <Image width={70} height={100} src="/images/windmill-bottom.png" alt="Windmill Bottom"/>
           </div>
@@ -131,9 +136,9 @@ function Hero() {
           <div className=''>
         <div className=' w-1/2 max-lg:4/6 max-md:w-11/12  max-md:h-48  bg-success bg-contain  bg-no-repeat bg-center fixed justify-center items-center left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 z-[90] font-lilitaOneRegular text-center py-12 px-24  max-xl:py-24 max-xl:px-10 max-lg:py-6 max-sm:py-2 max-sm:px-6 '>
         <div className=' relative  py-12 px-12 max-xl:py-10 max-xl:px-16 max-lg:py-9 max-lg:px-24 max-sm:px-6 text-center'>
-          <h1 className='text-[42px] max-xl:text-[32px] max-lg:text-[24px] max-sm:text-[18px] text-[#0C360A]'>Successful</h1>
+          <h1 className='text-[42px] max-xl:text-[32px] max-lg:text-[24px] max-sm:text-[18px] text-[#0C360A] -mt-12'>Successful</h1>
           <p className='text-[24px] max-xl:text-[20px] max-lg:text-[16px] max-sm:text-[14px] text-[#445930] leading-2'>Congratulations! You have been successfully added to our waiting list. We'll keep you updated with our latest news.</p>
-          <button onClick={() => setStatus(null)} className='absolute left-1/2 -translate-x-1/2 -bottom-2 translate-y-1/2 text-[28px] max-xl:text-[22px] max-lg:text-[18px] max-sm:text-[16px] text-[#0C360A] bg-[#E6FFC6] hover:bg-[#bad596] border-[12px] max-lg:border-[8px] border-[#0C360A] py-3 px-16 max-xl:px-12 max-lg:py-2 max-lg:px-9 max-lg:-bottom-0 max-sm:bottom-0 max-sm:px-6 max-sm:border-4 max-sm:py-1'>Thanks</button>
+          <button onClick={() => setStatus(null)} className='absolute left-1/2 -translate-x-1/2 -bottom-8 translate-y-1/2 text-[28px] max-xl:text-[22px] max-lg:text-[18px] max-sm:text-[16px] text-[#0C360A] bg-[#E6FFC6] hover:bg-[#bad596] border-[12px] max-lg:border-[8px] border-[#0C360A] py-3 px-16 max-xl:px-12 max-lg:py-2 max-lg:px-9 max-lg:-bottom-0 max-sm:bottom-0 max-sm:px-6 max-sm:border-4 max-sm:py-1'>Thanks</button>
         </div>
       </div>
           </div>
@@ -202,10 +207,10 @@ function Hero() {
               )}
             <div className='flex justify-center mt-4 max-lg:mt-0'>
              
-              <div className='submit-btn w-4/5 h-16 relative mt-8' type="submit">
+              <div className='submit-btn w-4/5 h-[70px] relative mt-8' type="submit">
                 <div className='w-full h-[85%] bg-[#3C650E]  rounded-xl border-4 border-[#1B4006] flex justify-center absolute'>  
                </div>
-                <button className='btn-text w-full h-full absolute -top-2 text-3xl font-lilitaOneRegular text-white rounded-xl border-4 border-[#1B4006] -mt-4' style={{ backgroundColor: 'rgba(192, 237, 98, 0.8)'}}>JOHN WISHLIST</button>   
+                <button className='btn-text w-full h-full absolute -top-2 text-3xl font-lilitaOneRegular text-white rounded-xl border-4 border-[#1B4006] -mt-4'>JOHN WISHLIST</button>   
               </div>
 
             </div>
