@@ -41,7 +41,7 @@ button {
 
 
 
-.submit-btn:hover div {
+.submit-btn:hover div:nth-child(2) {
   background-color: #375F0B;
 }
 
