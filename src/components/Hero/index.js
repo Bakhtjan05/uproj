@@ -208,9 +208,12 @@ function Hero() {
             <div className='flex justify-center mt-4 max-lg:mt-0'>
              
               <div className='submit-btn w-4/5 h-[70px] relative mt-8' type="submit">
-                <div className='w-full h-[85%] bg-[#3C650E]  rounded-xl border-4 border-[#1B4006] flex justify-center absolute'>  
+                <div className='w-full h-full absolute -top-5 bg-[#C0ED62] rounded-xl'>
+
+                </div>
+                <div className='btn-top-border w-full h-[80%] bg-[#3C650E] mt-1  rounded-xl border-[5px] border-[#1B4006]  flex justify-center absolute'>  
                </div>
-                <button className='btn-text w-full h-full absolute -top-2 text-3xl font-lilitaOneRegular text-white rounded-xl border-4 border-[#1B4006] -mt-4'>JOHN WISHLIST</button>   
+                <button className='btn-text w-full h-full absolute -top-1 text-[32px] font-lilitaOneRegular text-white rounded-xl border-[5px] border-[#1B4006] -mt-4'>JOHN WISHLIST</button>   
               </div>
 
             </div>

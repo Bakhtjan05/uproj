@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Router from "next/router"; // Импортируем Router из next/router
+import Router from "next/router";
 import "@/styles/globals.css";
 import Head from "next/head";
 import Loading from "@/src/components/Loading";
@@ -8,29 +8,36 @@ export default function App({ Component, pageProps }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Когда приложение загружено, выключаем состояние загрузки
-    setLoading(false);
+    const minLoadingTime = 3000; // Минимальное время показа загрузочного экрана
 
-    const handleRouteChange = (url) => {
-      console.log("Route is changing...");
-      setLoading(true);
-    };
-
-    const handleRouteComplete = (url) => {
-      console.log("Route has completed.");
-      setLoading(false);
+    const handleLoad = () => {
+      // Если страница загружена, ждем окончания минимального времени загрузки
+      setTimeout(() => {
+        setLoading(false);
+      }, minLoadingTime);
     };
 
     // Подписываемся на события маршрутизации
-    Router.events.on("routeChangeStart", handleRouteChange);
-    Router.events.on("routeChangeComplete", handleRouteComplete);
-    Router.events.on("routeChangeError", handleRouteComplete);
+    const handleRouteChangeStart = () => setLoading(true);
+    const handleRouteChangeComplete = () => handleLoad();
 
-    // Убираем подписки, когда компонент размонтируется
+    Router.events.on("routeChangeStart", handleRouteChangeStart);
+    Router.events.on("routeChangeComplete", handleRouteChangeComplete);
+    Router.events.on("routeChangeError", handleRouteChangeComplete);
+
+    // Обработка полной загрузки страницы при первой загрузке
+    if (document.readyState === "complete") {
+      handleLoad();
+    } else {
+      window.addEventListener("load", handleLoad);
+    }
+
     return () => {
-      Router.events.off("routeChangeStart", handleRouteChange);
-      Router.events.off("routeChangeComplete", handleRouteComplete);
-      Router.events.off("routeChangeError", handleRouteComplete);
+      // Очищаем подписки
+      Router.events.off("routeChangeStart", handleRouteChangeStart);
+      Router.events.off("routeChangeComplete", handleRouteChangeComplete);
+      Router.events.off("routeChangeError", handleRouteChangeComplete);
+      window.removeEventListener("load", handleLoad);
     };
   }, []);
 
