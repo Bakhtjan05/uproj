@@ -134,8 +134,8 @@ function Hero() {
       <div className='container relative mx-auto max-md:w-11/12 px-16 max-xl:px-4 '>
       {status === "success" && (
           <div className=''>
-        <div className=' w-1/2 max-lg:4/6 max-md:w-11/12  max-md:h-48  bg-success bg-contain  bg-no-repeat bg-center fixed justify-center items-center left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 z-[90] font-lilitaOneRegular text-center py-12 px-24  max-xl:py-24 max-xl:px-10 max-lg:py-6 max-sm:py-2 max-sm:px-6 '>
-        <div className=' relative  py-12 px-12 max-xl:py-10 max-xl:px-16 max-lg:py-9 max-lg:px-24 max-sm:px-6 text-center'>
+        <div className=' w-1/2 max-lg:4/6 max-md:w-11/12  max-md:h-48  bg-success bg-contain  bg-no-repeat bg-center fixed justify-center items-center left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 z-[90] font-lilitaOneRegular text-center py-12 px-24  max-xl:py-24 max-xl:px-10 max-lg:py-6 max-sm:py-14 max-sm:px-6 '>
+        <div className=' relative py-12 px-12 max-xl:py-10 max-xl:px-16 max-lg:py-9 max-lg:px-24 max-sm:px-6 text-center'>
           <h1 className='text-[42px] max-xl:text-[32px] max-lg:text-[24px] max-sm:text-[18px] text-[#0C360A] -mt-12'>Successful</h1>
           <p className='text-[24px] max-xl:text-[20px] max-lg:text-[16px] max-sm:text-[14px] text-[#445930] leading-2'>Congratulations! You have been successfully added to our waiting list. We'll keep you updated with our latest news.</p>
           <button onClick={() => setStatus(null)} className='absolute left-1/2 -translate-x-1/2 -bottom-8 translate-y-1/2 text-[28px] max-xl:text-[22px] max-lg:text-[18px] max-sm:text-[16px] text-[#0C360A] bg-[#E6FFC6] hover:bg-[#bad596] border-[12px] max-lg:border-[8px] border-[#0C360A] py-3 px-16 max-xl:px-12 max-lg:py-2 max-lg:px-9 max-lg:-bottom-0 max-sm:bottom-0 max-sm:px-6 max-sm:border-4 max-sm:py-1'>Thanks</button>
