@@ -64,3 +64,10 @@ button {
 
   /* rgb(192, 237, 98, 0.78) */
 }
+
+@media (max-width: 736px) {
+  .btn-text {
+text-shadow: rgb(27, 64, 6) 3px 0px 0px, rgb(27, 64, 6) 2.9px 0.74px 0px, rgb(27, 64, 6) 2.63px 1.43px 0px, rgb(27, 64, 6) 2.19px 2.03px 0px, rgb(27, 64, 6) 1.62px 2.51px 0px, rgb(27, 64, 6) 0.94px 2.83px 0px, rgb(27, 64, 6) 0.21px 2.97px 0px, rgb(27, 64, 6) -0.53px 2.92px 0px, rgb(27, 64, 6) -1.24px 2.71px 0px, rgb(27, 64, 6) -1.87px 2.33px 0px, rgb(27, 64, 6) -2.38px 1.79px 0px, rgb(27, 64, 6) -2.75px 1.14px 0px, rgb(27, 64, 6) -3.03px 0.42px 0px, rgb(27, 64, 6) -3.04px -0.32px 0px, rgb(27, 64, 6) -2.85px -1.04px 0px, rgb(27, 64, 6) -2.42px -1.65px 0px, rgb(27, 64, 6) -1.87px -2.22px 0px, rgb(27, 64, 6) -1.28px -2.63px 0px, rgb(27, 64, 6) -0.61px -2.87px 0px, rgb(27, 64, 6) 0.11px -2.93px 0px, rgb(27, 64, 6) 0.84px -2.82px 0px, rgb(27, 64, 6) 1.52px -2.53px 0px, rgb(27, 64, 6) 2.11px -2.08px 0px, rgb(27, 64, 6) 2.63px -1.5px 0px, rgb(27, 64, 6) 2.93px -0.83px 0px, rgb(27, 64, 6) 3px -0.1px 0px;
+
+  }
+}
