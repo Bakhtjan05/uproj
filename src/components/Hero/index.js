@@ -132,11 +132,11 @@ function Hero() {
       <div className='container relative mx-auto max-md:w-11/12 px-16 max-xl:px-4 '>
       {status === "success" && (
           <div className=''>
-        <div className=' w-1/2 max-lg:4/6 max-md:w-11/12  max-md:h-48  bg-success bg-contain  bg-no-repeat bg-center fixed justify-center items-center left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 z-[90] font-lilitaOneRegular text-center py-12 px-24  max-xl:py-24 max-xl:px-10 max-lg:py-6 max-sm:py-14 max-sm:px-6 '>
+        <div className=' w-1/2 max-[1300px]:w-3/5 max-lg:4/6 max-md:w-11/12  max-md:h-48  bg-success bg-contain  bg-no-repeat bg-center fixed justify-center items-center left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 z-[90] font-lilitaOneRegular text-center py-12 px-12 min-[1600px]:px-28  max-xl:py-24 max-xl:px-10 max-lg:py-6 max-sm:py-14 max-sm:px-6 '>
         <div className=' relative py-12 px-12 max-xl:py-10 max-xl:px-16 max-lg:py-9 max-lg:px-24 max-sm:px-6 text-center'>
-          <h1 className='text-[42px] max-xl:text-[32px] max-lg:text-[24px] max-sm:text-[18px] text-[#0C360A] -mt-12'>Successful</h1>
+          <h1 className='text-[42px] max-xl:text-[32px] max-lg:text-[24px] max-sm:text-[18px] text-[#0C360A] -mt-6 max-sm:-mt-12'>Successful</h1>
           <p className='text-[24px] max-xl:text-[20px] max-lg:text-[16px] max-sm:text-[14px] text-[#445930] leading-2'>Congratulations! You have been successfully added to our waiting list. We'll keep you updated with our latest news.</p>
-          <button onClick={() => setStatus(null)} className='absolute left-1/2 -translate-x-1/2 -bottom-8 translate-y-1/2 text-[28px] max-xl:text-[22px] max-lg:text-[18px] max-sm:text-[16px] text-[#0C360A] bg-[#E6FFC6] hover:bg-[#bad596] border-[12px] max-lg:border-[8px] border-[#0C360A] py-3 px-16 max-xl:px-12 max-lg:py-2 max-lg:px-9 max-lg:-bottom-0 max-sm:bottom-0 max-sm:px-6 max-sm:border-4 max-sm:py-1'>Thanks</button>
+          <button onClick={() => setStatus(null)} className='absolute left-1/2 -translate-x-1/2 -bottom-6 translate-y-1/2 text-[28px] max-xl:text-[22px] max-lg:text-[18px] max-sm:text-[16px] text-[#0C360A] bg-[#E6FFC6] hover:bg-[#bad596] border-[12px] max-lg:border-[8px] border-[#0C360A] py-3 px-16 max-xl:px-12 max-lg:py-2 max-lg:px-9 max-lg:-bottom-0 max-sm:bottom-0 max-sm:px-6 max-sm:border-4 max-sm:py-1'>Thanks</button>
         </div>
       </div>
           </div>
@@ -254,10 +254,10 @@ function Hero() {
               )}
             <div className='flex justify-center mt-4 max-lg:mt-0'>
             <div className='submit-btn w-4/6 h-16 max-md:h-14 relative mt-6' type="submit">
-              <div className='w-full h-full absolute -top-4 bg-[#C0ED62] rounded-xl'> </div>
+              <div className='w-full h-full absolute -top-3 bg-[#C0ED62] rounded-xl'> </div>
               <div className='btn-top-border w-full h-[80%] bg-[#3C650E] mt-1  rounded-xl border-[3.5px] border-[#1B4006]  flex justify-center absolute'>  
                 </div>
-                <button className='btn-text w-full h-full absolute top-0 text-3xl max-md:text-xl font-lilitaOneRegular text-white rounded-xl border-[3.5px] border-[#1B4006] -mt-4'>JOIN WISHLIST</button> 
+                <button className='btn-text w-full h-full absolute top-0 text-3xl max-md:text-xl font-lilitaOneRegular text-white rounded-xl border-[3.5px] border-[#1B4006] -mt-3'>JOIN WISHLIST</button> 
               </div>
             </div>
             </form>
