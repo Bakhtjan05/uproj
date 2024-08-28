@@ -115,16 +115,14 @@ function Hero() {
       </motion.div>
       <div className='absolute top-[22%] translate-y-1/2 left-64 max-xl:left-52 max-lg:left-40 max-md:top-[10%] max-md:left-12 max-[442px]:top-52'>
         <div className='relative w-32'>
-          <motion.div 
-          animate={{ rotate: 360 }}
-          transition={{ repeat: Infinity, duration: 5, ease: "linear" }}
+          <div 
           className='absolute -left-8 top-0 max-[442px]:-left-1 max-[442px]:top-5 z-50'>
-            <Image 
-            width={150}
-            height={100} 
+            <motion.img 
+            animate={{ rotate: 360 }}
+            transition={{ repeat: Infinity, duration: 5, ease: "linear" }}
              className='w-full h-full object-cover max-[442px]:w-20' src="/images/windmill-top.png" alt="Windmill Top" 
               />
-          </motion.div>
+          </div>
           <div className='absolute left-0 top-[50px] z-40'>
             <Image width={70} height={100} src="/images/windmill-bottom.png" alt="Windmill Bottom"/>
           </div>
